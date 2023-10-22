@@ -17,6 +17,18 @@ const count = ref(0)
       Edit
       <code>components/HelloWorld.vue</code> to test HMR
     </p>
+    <p>
+      Edit
+      <code>components/HelloWorld.vue</code> to test HMR
+    </p>
+    <p>
+      Edit
+      <code>components/HelloWorld.vue</code> to test HMR
+    </p>
+    <p>
+      Edit
+      <code>components/HelloWorld.vue</code> to test HMR
+    </p>
   </div>
 
   <p>
