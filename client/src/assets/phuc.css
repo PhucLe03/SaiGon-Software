@@ -169,17 +169,35 @@ header {
     }
 } */
 
+/* .phuc_nav {
+    border-color: #ffcdae;
+    border-radius: 20px;
+    border-style: double;
+} */
+.phuc_nav :hover {
+    /* border-color: #ffcdae; */
+    border-radius: 40%;
+    /* border-style: double; */
+}
+
 .phuc_nav a {
     border-radius: 10px;
     /* background-color: #D7EFF9; */
     color: black;
     font-weight: bold;
+    padding: 0.6em 1.2em;
+    transition: .45s;
 }
 
 .phuc_nav a:hover {
     background-color: #2974A3;
     color: #ffcdae;
 }
+
+/* .phuc_nav:focus,
+.phuc_nav:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+} */
 
 .phuc_nav_button{
     border-radius: 10px;
