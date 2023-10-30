@@ -24,7 +24,7 @@
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
                   >
-                    Sản phẩm {{ productdropdown }}
+                    Danh mục sản phẩm {{ productdropdown }}
                   </div>
                   <ul
                     class="dropdown-menu phuc_nav"
