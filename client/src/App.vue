@@ -1,8 +1,8 @@
 <script setup>
-import HelloWorld from "./components/HelloWorld.vue";
 import NavBar from "./components/global/NavBar.vue";
+import HomeView from "./Views/HomeView.vue";
 
-// export {
+// export default {
 //   name: "App",
 //   compatConfig: { MODE: 3 }
 // }
@@ -10,7 +10,8 @@ import NavBar from "./components/global/NavBar.vue";
 
 <template>
   <NavBar />
-  <router-view/>
+  <router-view />
+  <!-- <HomeView/> -->
   <!-- <div class="phuc_clear" />
   <div>
     <a href="https://vitejs.dev" target="_blank">
@@ -20,7 +21,7 @@ import NavBar from "./components/global/NavBar.vue";
       <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
     </a>
   </div>-->
-  <HelloWorld msg="Vite and Vue" /> 
+  <!-- <HelloWorld msg="Vite and Vue" />  -->
 </template>
 
 <style scoped>

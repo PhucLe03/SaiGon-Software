@@ -4,5 +4,9 @@ import './assets/phuc.css'
 import './style.css'
 import App from './App.vue'
 
-const app = createApp(App);
+const app = createApp(App)
+
+import router from './Router'
+app.use(router)
+
 app.mount('#app')
