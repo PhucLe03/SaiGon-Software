@@ -1,5 +1,6 @@
 <script setup>
 import NavBar from "./components/global/NavBar.vue";
+import Foot from "./components/global/Footer.vue";
 import HomeView from "./Views/HomeView.vue";
 
 // export default {
@@ -11,6 +12,7 @@ import HomeView from "./Views/HomeView.vue";
 <template>
   <NavBar />
   <router-view />
+  <Foot/>
   <!-- <HomeView/> -->
   <!-- <div class="phuc_clear" />
   <div>
