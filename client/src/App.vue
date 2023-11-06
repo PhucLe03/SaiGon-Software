@@ -1,27 +1,20 @@
-<script setup>
-import HelloWorld from "./components/HelloWorld.vue";
-import NavBar from "./components/global/NavBar.vue";
-
-// export {
-//   name: "App",
-//   compatConfig: { MODE: 3 }
-// }
-</script>
-
 <template>
-  <NavBar />
-  <router-view/>
-  <!-- <div class="phuc_clear" />
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>-->
-  <HelloWorld msg="Vite and Vue" /> 
+  <div id="app">
+    <NavBar/>
+    <router-view/>
+  </div>
 </template>
+
+<script>
+import NavBar from './components/global/NavBar.vue';
+
+export default {
+  name: 'App',
+  components: {
+    NavBar,
+  }
+}
+</script>
 
 <style scoped>
 .logo {
