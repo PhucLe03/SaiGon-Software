@@ -71,49 +71,52 @@
       </div>
     </div>
     <!-- product 3 -->
-    <div class="col-6 p-3 ">
-      <div class="row">
-        <div class="col-md-4 ">
-          <img src="../assets/images/pc.png" alt="this is logo" height="150" width="150">
-        </div>
-        <div class="col-md-4">
-          <div class="newProduct">
-            Sản phẩm mới
+    <a class="col-6 p-3" href="/cart">
+      <div>
+        <div class="row">
+          <div class="col-md-4 ">
+            <img src="../assets/images/pc.png" alt="this is logo" height="150" width="150">
           </div>
-          <div class="nameOfProduct">
-            {{product}}
-          </div>
-          <div class="accessoryOfProduct">
-            {{accessory}}
-          </div>
-          <div class="priceOfProduct">
-            {{price}}
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- product 4 -->
-    <div class="col-6 p-3 ">
-      <div class="row">
-        <div class="col-md-4 ">
-          <img src="../assets/images/pc.png" alt="this is logo" height="150" width="150">
-        </div>
-        <div class="col-md-4">
-          <div class="newProduct">
-            Sản phẩm mới
-          </div>
-          <div class="nameOfProduct">
-            {{product}}
-          </div>
-          <div class="accessoryOfProduct">
-            {{accessory}}
-          </div>
-          <div class="priceOfProduct">
-            {{price}}
+          <div class="col-md-4">
+            <div class="newProduct">
+              Sản phẩm mới
+            </div>
+            <div class="nameOfProduct">
+              {{product}}
+            </div>
+            <div class="accessoryOfProduct">
+              {{accessory}}
+            </div>
+            <div class="priceOfProduct">
+              {{price}}
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </a>
+    <a class="col-6 p-3" href="/cart">
+      <div>
+        <div class="row">
+          <div class="col-md-4 ">
+            <img src="../assets/images/pc.png" alt="this is logo" height="150" width="150">
+          </div>
+          <div class="col-md-4">
+            <div class="newProduct">
+              Sản phẩm mới
+            </div>
+            <div class="nameOfProduct">
+              {{product}}
+            </div>
+            <div class="accessoryOfProduct">
+              {{accessory}}
+            </div>
+            <div class="priceOfProduct">
+              {{price}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </a>
   </div>
 </div>
         </div>
