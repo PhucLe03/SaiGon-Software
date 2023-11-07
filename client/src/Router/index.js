@@ -1,24 +1,41 @@
 import { createRouter, createWebHistory } from "vue-router";
 
 import HomeView from "../Views/HomeView.vue";
-import ProductDetail from "../Views/ProductDetail.vue";
+// import ProductDetail from "../Views/ProductDetail.vue";
+import NotFoundPage from "../Views/NotFoundPage.vue";
+import DetailPage from "../views/DetailPage1.vue";
+import CartPage from "../views/CartPage.vue";
 
 const routes = [
   {
-    path: "/",
+    path: "/home",
     name: "Home",
     component: HomeView,
     meta: {
-        title: "Home Page",
-      },
+      title: "Home Page",
+    },
   },
   {
-    path: "/detail",
-    name: "ProductDetail",
-    component: ProductDetail,
+    path: "/product/:id",
+    name: "DetailPage",
+    component: DetailPage,
+  },
+  {
+    path: "/cart",
+    name: "CartPage",
+    component: CartPage,
+  },
+  {
+    path: "/",
+    redirect: "/home",
+  },
+  {
+    path: "/:pathMatch(.*)*",
+    name: "NotFoundPage",
+    component: NotFoundPage,
     meta: {
-        title: "Detail",
-      },
+      title: "Page Not Found",
+    },
   },
 ];
 

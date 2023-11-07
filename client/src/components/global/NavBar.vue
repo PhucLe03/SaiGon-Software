@@ -1,5 +1,4 @@
 <template>
-  <html lang="en">
     <header>
       <nav
         class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3 phuc_bg"
@@ -10,7 +9,7 @@
             alt="SGSW"
             src="../assets/images/sgswlogo.png"
           />
-          <a class="navbar-brand" href="home">BK EC</a>
+          <a class="navbar-brand" href="/">BK EC</a>
           <div
             class="navbar-collapse collapse d-sm-inline-flex"
           >
@@ -84,7 +83,6 @@
         </div>
       </nav>
     </header>
-  </html>
 </template>
 
 <script>

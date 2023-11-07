@@ -1,6 +1,7 @@
 <script setup>
 import NavBar from "./components/global/NavBar.vue";
-import HomeView from "./Views/HomeView.vue";
+import Foot from "./components/global/Footer.vue";
+// import HomeView from "./Views/HomeView.vue";
 
 // export default {
 //   name: "App",
@@ -9,8 +10,9 @@ import HomeView from "./Views/HomeView.vue";
 </script>
 
 <template>
-  <NavBar />
+  <NavBar/>
   <router-view />
+  <Foot/>
   <!-- <HomeView/> -->
   <!-- <div class="phuc_clear" />
   <div>
@@ -36,5 +38,8 @@ import HomeView from "./Views/HomeView.vue";
 }
 .logo.vue:hover {
   filter: drop-shadow(0 0 2em #42b883aa);
+}
+body {
+  padding: 60px;
 }
 </style>
