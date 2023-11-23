@@ -3,6 +3,13 @@ $option = 0;
 
 ?>
 
+<style>
+  #content-start {
+    position: relative;
+    top: 60px;
+  }
+</style>
+
 <header>
   <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3 phuc_bg">
     <div class="container-fluid">
@@ -29,10 +36,10 @@ $option = 0;
         </form>
         <ul class="navbar-nav flex-grow-1 justify-content-evenly">
           <li class="phuc_nav">
-            <a class="nav-link" href="privacy">Trao đổi</a>
+            <a class="nav-link" href="/privacy">Trao đổi</a>
           </li>
           <li class="phuc_nav">
-            <a class="nav-link" href="about">Liên hệ</a>
+            <a class="nav-link" href="/about">Liên hệ</a>
           </li>
         </ul>
       </div>
@@ -40,11 +47,11 @@ $option = 0;
       <div class="navbar-collapse collapse d-sm-inline-flex">
         <ul class="navbar-nav flex-grow-1 justify-content-end">
           <li class="phuc_nav">
-            <a class="nav-link" href="cart">
+            <a class="nav-link" href="/cart">
               <span class="material-symbols-outlined"> shopping_cart </span>Giỏ hàng</a>
           </li>
           <li class="phuc_nav">
-            <a class="nav-link" href="login">
+            <a class="nav-link" href="/login">
               <span class="material-symbols-outlined"> person </span>
               Đăng nhập</a>
           </li>
@@ -53,3 +60,4 @@ $option = 0;
     </div>
   </nav>
 </header>
+<!-- <div id="content-start"></div> -->

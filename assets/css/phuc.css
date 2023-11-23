@@ -16,11 +16,14 @@ body {
     height: 100%;
     display: grid;
     grid-template-rows: 1fr auto;
+    padding-top: 50px;
     /* min-height: 100%; */
 }
 
 header {
-    position: fixed;
+    /* position: sticky; */
+    /* position: -webkit-sticky; */
+    position:fixed;
     z-index: 999999;
     /* fixing the position takes it out of html flow - knows
                      nothing about where to locate itself except by browser
