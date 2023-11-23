@@ -14,6 +14,8 @@
   -webkit-text-size-adjust: 100%;
 }
 
+@import "./phuc.css";
+@import "./tung.css";
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;

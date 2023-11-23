@@ -1,5 +1,4 @@
-<template>
-    <header>
+<header>
       <nav
         class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3 phuc_bg"
       >
@@ -7,7 +6,7 @@
           <img
             class="phuc_logo"
             alt="SGSW"
-            src="../assets/images/sgswlogo.png"
+            src="assets/images/logo.png"
           />
           <a class="navbar-brand" href="/">BK EC</a>
           <div
@@ -83,29 +82,3 @@
         </div>
       </nav>
     </header>
-</template>
-
-<script>
-export default {
-  name: "AppHeader",
-  data() {
-    return {
-      products: [
-        { title: "A", link: "AA" },
-        { title: "B", link: "BB" },
-      ],
-    };
-  },
-};
-</script>
-
-<style scoped>
-#app {
-  font-family: Helvetica, Arial, sans-serif, Avenir;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 0px;
-}
-</style>
