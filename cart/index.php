@@ -18,7 +18,13 @@
     <?php include "../assets/global/global_nav.php";?>
     <div class=" container">
         <h1>Cart View</h1>
-        <div class="slider"></div>
+        <!-- <div class="slider"></div> -->
+        <?php
+        for ($x = 1; $x < 5; $x++) {
+            $_GET['id'] = $x;
+            include "../product/productlistitem.php";
+        }
+        ?>
     </div>
 </body>
 
