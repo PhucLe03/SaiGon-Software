@@ -20,9 +20,9 @@ $option = 0;
           <li class="nav-item dropdown">
             <a href="" class="dropdown-toggle phuc_nav_button phuc_nav" data-bs-toggle="dropdown">Danh mục sản phẩm<b class="caret"></b></a>
             <ul class="dropdown-menu ">
-              <li><a href="1" class="dropdown-item">link 1</a></li>
-              <li><a href="2" class="dropdown-item">link 2</a></li>
-              <li><a href="3" class="dropdown-item">link 3</a></li>
+              <li><a href="/1" class="dropdown-item">link 1</a></li>
+              <li><a href="/2" class="dropdown-item">link 2</a></li>
+              <li><a href="/3" class="dropdown-item">link 3</a></li>
             </ul>
           </li>
         </ul>
