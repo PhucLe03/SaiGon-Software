@@ -89,7 +89,7 @@
                             </div>
                         </div>
                         <!-- product 3 -->
-                        <a class="col-6 p-3" href="/cart">
+                        <a class="col-6 p-3" href="/product/detail.php">
                             <div>
                                 <div class="row">
                                     <div class="col-md-4 ">
@@ -112,7 +112,7 @@
                                 </div>
                             </div>
                         </a>
-                        <a class="col-6 p-3" href="/cart">
+                        <a class="col-6 p-3" href="/product/detail.php">
                             <div>
                                 <div class="row">
                                     <div class="col-md-4 ">
