@@ -36,10 +36,10 @@ $option = 0;
         </form>
         <ul class="navbar-nav flex-grow-1 justify-content-evenly">
           <li class="phuc_nav">
-            <a class="nav-link" href="/privacy">Trao đổi</a>
+            <a class="nav-link" href="/exchange">Trao đổi</a>
           </li>
           <li class="phuc_nav">
-            <a class="nav-link" href="/about">Liên hệ</a>
+            <a class="nav-link" href="about.php">Liên hệ</a>
           </li>
         </ul>
       </div>
