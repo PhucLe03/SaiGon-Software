@@ -1,0 +1,253 @@
+html {
+    position: relative;
+    font-size: 14px;
+    min-height: 100%;
+    /* height: 100%; */
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+body {
+    /* margin-bottom: 60px; */
+    height: 100%;
+    display: grid;
+    grid-template-rows: 1fr auto;
+    padding-top: 50px;
+    /* min-height: 100%; */
+}
+
+header {
+    /* position: sticky; */
+    /* position: -webkit-sticky; */
+    position:fixed;
+    z-index: 999999;
+    /* fixing the position takes it out of html flow - knows
+                     nothing about where to locate itself except by browser
+                     coordinates */
+    left: 0;
+    /* top left corner should start at leftmost spot */
+    top: 0;
+    /* top left corner should start at topmost spot */
+    width: 100%;
+    /* take up the full browser width */
+}
+
+.phuc_bold {
+    font-weight: bold;
+}
+
+.phuc_align {
+    text-align: center;
+    align-items: center;
+}
+
+.phuc_button {
+    background-color: green;
+    padding: 0.5rem 1rem;
+    font-size: 1.25rem;
+    border-radius: 0.3rem;
+    border: hidden;
+    cursor: pointer;
+    font-weight: bold;
+    color: gold;
+    margin-bottom: 1%;
+    margin-top: 1%;
+    display: inline-block;
+    text-align: center;
+}
+
+.phuc_button_icon {
+    display: inline-flex;
+}
+
+.phuc_button:hover {
+    background-color: darkgreen;
+    color: wheat;
+}
+
+.phuc_delete_button {
+
+    background-color: red;
+    padding: 2px 5px;
+}
+
+.phuc_delete_button:hover {
+    background-color: lightsalmon;
+}
+
+.phuc_edit_button {
+    background-color: darkcyan;
+    padding: 2px 5px;
+}
+
+.phuc_edit_button:hover {
+    background-color: lightgreen;
+}
+
+.phuc_add_button {
+
+    background-color: blue;
+    padding: 2px 5px;
+}
+
+.phuc_add_button:hover {
+    background-color: blueviolet;
+}
+
+.phuc_export_button {
+
+    background-color: green;
+    padding: 2px 5px;
+}
+
+.phuc_export_button:hover {
+    background-color: lightgreen;
+}
+
+
+.phuc_round {
+    border-radius: 0.3rem;
+}
+
+
+.phuc_center {
+    text-align: center;
+}
+
+.phuc_group {
+    position: relative;
+    display: flex;
+}
+
+.phuc_block {
+    display: block;
+}
+
+.phuc_clear {
+    clear: both;
+    height: 100px;
+    /* min-height: 100%; */
+}
+
+/* .phuc_clear::after {
+
+} */
+
+.material-symbols-outlined {
+    font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24
+}
+
+.phuc_darktheme {
+    background-color: gray;
+}
+
+.phuc_bg {
+    background-color: #D7EFF9;
+    font-weight: bold;
+}
+
+/* .phuc_nav {
+    border-radius: 10px;
+}
+
+.phuc_nav:hover {
+    background-color: #2974A3;
+    color: black;
+} */
+
+/* nav {
+    li {
+        display: inline !important;
+    }
+    
+    a {
+        display: inline !important;
+    }
+} */
+
+/* .phuc_nav {
+    border-color: #ffcdae;
+    border-radius: 20px;
+    border-style: double;
+} */
+.phuc_nav :hover {
+    /* border-color: #ffcdae; */
+    border-radius: 40%;
+    /* border-style: double; */
+}
+
+.phuc_nav a {
+    border-radius: 10px;
+    /* background-color: #D7EFF9; */
+    color: black;
+    font-weight: bold;
+    padding: 0.6em 1.2em;
+    transition: .45s;
+}
+
+.phuc_nav a:hover {
+    background-color: #2974A3;
+    color: #ffcdae;
+}
+
+/* .phuc_nav:focus,
+.phuc_nav:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+} */
+
+.phuc_nav_button{
+    border-radius: 10px;
+    /* background-color: #D7EFF9; */
+    color: black;
+    font-weight: bold;
+}
+
+.phuc_nav_button :hover {
+    background-color: #2974A3;
+    color: #ffcdae;
+}
+
+.phuc_footer {
+    position: fixed;
+    /* position: absolute; */
+    /*use this only when the page is full of content*/
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 1rem;
+}
+
+.phuc_logo {
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    padding: 5px;
+}
+
+table tr {
+    border: 1px solid rgb(0, 0, 0);
+    border-top: 1px solid rgb(0, 0, 0);
+}
+
+table td {
+    padding: 2px;
+}
+
+table {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+th {
+    background-color: lightgreen;
+}
