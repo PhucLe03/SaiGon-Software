@@ -1,6 +1,8 @@
 <?php
 include "DB_conn.php";
-session_start();
+if (!isset($_SESSION)) {
+    session_start();
+}
 
 $product = "NEW PC";
 $accessory = "PC";
@@ -67,10 +69,10 @@ $price = 2000000;
                     <?php
                     foreach ($slides as $slide) {
                     ?>
-                    <a href="/cart">
-                        <img id="slide_img" src="<?=$slide['imageUrl']?>" alt="">
-                    </a>
-                    <?php }?>
+                        <a href="/cart">
+                            <img id="slide_img" src="<?= $slide['imageUrl'] ?>" alt="">
+                        </a>
+                    <?php } ?>
                 </div>
             </div>
             <div><button class="active slide_button" id="next" onclick="next()"><i class="fa-solid fa-arrow-right"></i></button>
@@ -184,7 +186,10 @@ $price = 2000000;
                 </div>
             </div>
         </div>
-        <script src="./assets/js/slider.js"></script>
+
+    </div>
+    <?php include "footer.php" ?>
+    <script src="./assets/js/slider.js"></script>
 </body>
 
 </html>
