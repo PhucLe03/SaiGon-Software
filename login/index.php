@@ -10,7 +10,7 @@
         include "../header.php";
         ?>
     </title>
-    <?php include "../assets/global/global_css.php"?>
+    <?php include "../assets/global/global_css.php" ?>
 </head>
 
 <body>
@@ -24,28 +24,24 @@
                 <div class="text-center">
                     <img src="../assets/images/logo.png" width="100" alt="LOGO" style="border-radius: 50%;">
                 </div>
-                <hr/>
+                <hr />
                 <h3 class="text-center">ĐĂNG NHẬP</h3>
-                <hr/>
-                <?php 
+                <hr />
+                <?php
                 // $err_stmt = $_GET['error'];
                 if (isset($_GET['error'])) { ?>
                     <div class="alert alert-danger" role="alert">
                         <?php
                         $err_stmt = $_GET['error'];
-                        if ($err_stmt=="unp") {
+                        if ($err_stmt == "unp") {
                             $err = "Tên đăng nhập và Mật khẩu không được để trống";
-                        }
-                        else if ($err_stmt=="u") {
+                        } else if ($err_stmt == "u") {
                             $err = "Tên đăng nhập không được trống";
-                        }
-                        else if ($err_stmt=="p") {
+                        } else if ($err_stmt == "p") {
                             $err = "Mật khẩu không được để trống";
-                        }
-                        else if ($err_stmt=="w") {
+                        } else if ($err_stmt == "w") {
                             $err = "Tên đăng nhập hoặc mật khẩu sai";
-                        }
-                        else {
+                        } else {
                             $err = "Đã có lỗi xảy ra";
                         }
                         // echo $err;
@@ -67,7 +63,7 @@
                     <a href="login/quenmk.php">Quên mật khẩu</a>
                 </div>
 
-                <hr/>
+                <hr />
                 <button type="submit" class="btn btn-primary">Đăng nhập</button>
                 <a href="index.php" class="text-decoration-none">Về trang chủ</a>
             </form>
@@ -76,8 +72,8 @@
             <div class="container"></div>
 
         </div>
-        </div>
-    
+    </div>
+    <?php include "../footer.php"; ?>
 </body>
 
 </html>

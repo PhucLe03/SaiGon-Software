@@ -86,6 +86,7 @@ $product['description'] = "Tai nghe xịn";
             <p><?php echo $product['description']; ?></p>
         </div>
     </div> -->
+    <?php include "../footer.php";?>
 </body>
 
 </html>

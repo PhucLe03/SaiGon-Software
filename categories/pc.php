@@ -127,7 +127,7 @@ $price = 2000000;
         <div class="container"></div>
 
     </div>
-    </div>
+    <?php include "../footer.php";?>
 
 </body>
 

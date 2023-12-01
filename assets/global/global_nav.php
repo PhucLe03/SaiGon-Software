@@ -57,7 +57,7 @@ if (!isset($_SESSION)) {
                   <span class="material-symbols-outlined"> shopping_cart </span>Giỏ hàng</a>
               </li>
               <li class="phuc_nav">
-                <a class="nav-link" href="/cart">
+                <a class="nav-link" href="/profile">
                   <span class="material-symbols-outlined"> person </span>
                   <?= $_SESSION['username'] ?></a>
               </li>
