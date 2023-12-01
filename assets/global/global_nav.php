@@ -1,6 +1,8 @@
 <?php
 $option = 0;
-
+if (!isset($_SESSION)) {
+  session_start();
+}
 ?>
 
 <style>
@@ -20,8 +22,8 @@ $option = 0;
           <li class="nav-item dropdown">
             <a href="" class="dropdown-toggle phuc_nav_button phuc_nav" data-bs-toggle="dropdown">Danh mục sản phẩm<b class="caret"></b></a>
             <ul class="dropdown-menu ">
-              <li><a href="/1" class="dropdown-item">link 1</a></li>
-              <li><a href="/2" class="dropdown-item">link 2</a></li>
+              <li><a href="/categories/pc.php" class="dropdown-item">PC</a></li>
+              <li><a href="/categories/tainghe.php" class="dropdown-item">Tai nghe</a></li>
               <li><a href="/3" class="dropdown-item">link 3</a></li>
             </ul>
           </li>
@@ -46,15 +48,50 @@ $option = 0;
       <!-- </div> -->
       <div class="navbar-collapse collapse d-sm-inline-flex">
         <ul class="navbar-nav flex-grow-1 justify-content-end">
-          <li class="phuc_nav">
-            <a class="nav-link" href="/cart">
-              <span class="material-symbols-outlined"> shopping_cart </span>Giỏ hàng</a>
-          </li>
-          <li class="phuc_nav">
-            <a class="nav-link" href="/login">
-              <span class="material-symbols-outlined"> person </span>
-              Đăng nhập</a>
-          </li>
+          <?php
+          if (isset($_SESSION['username'])) {
+            if ($_SESSION['tucach'] == "User") {
+          ?>
+              <li class="phuc_nav">
+                <a class="nav-link" href="/cart">
+                  <span class="material-symbols-outlined"> shopping_cart </span>Giỏ hàng</a>
+              </li>
+              <li class="phuc_nav">
+                <a class="nav-link" href="/cart">
+                  <span class="material-symbols-outlined"> person </span>
+                  <?= $_SESSION['username'] ?></a>
+              </li>
+            <?php
+            } else { ?>
+            <li class="phuc_nav">
+                <a class="nav-link" href="/cart">
+                  <span class="material-symbols-outlined"> construction </span>Quản lý</a>
+              </li>
+              <li class="phuc_nav">
+                <a class="nav-link" href="/admin">
+                  <span class="material-symbols-outlined"> person </span>
+                  <?= $_SESSION['username'] ?></a>
+              </li>
+            <?php
+            }
+            ?>
+            <li class="phuc_nav">
+                <a class="nav-link" href="/login/logout.php">
+                  <span class="material-symbols-outlined"> logout </span>
+                  Đăng xuất</a>
+              </li>
+            <?php
+
+          } else {
+            ?>
+            <li class="phuc_nav">
+              <a class="nav-link" href="/login">
+                <span class="material-symbols-outlined"> person </span>
+                Đăng nhập</a>
+            </li>
+          <?php
+          }
+          ?>
         </ul>
       </div>
     </div>
