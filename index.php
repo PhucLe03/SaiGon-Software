@@ -1,4 +1,7 @@
 <?php
+include "DB_conn.php";
+session_start();
+
 $product = "NEW PC";
 $accessory = "PC";
 $price = 2000000;
@@ -64,7 +67,9 @@ $price = 2000000;
                     <?php
                     foreach ($slides as $slide) {
                     ?>
-                    <img id="slide_img" src="<?=$slide['imageUrl']?>" alt="">
+                    <a href="/cart">
+                        <img id="slide_img" src="<?=$slide['imageUrl']?>" alt="">
+                    </a>
                     <?php }?>
                 </div>
             </div>

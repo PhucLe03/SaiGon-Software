@@ -19,7 +19,7 @@
     ?>
     <div class="container">
         <div class="d-flex justify-content-center align-items-center flex-column">
-            <form class="login" method="post" action="login/process_login.php">
+            <form class="login" method="post" action="../login/process_login.php">
 
                 <div class="text-center">
                     <img src="../assets/images/logo.png" width="100" alt="LOGO" style="border-radius: 50%;">
