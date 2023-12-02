@@ -2,11 +2,13 @@
 if (!isset($_SESSION)) {
     session_start();
 }
+include "../controllers/includer.php";
 if (isset($_SESSION['username'])) {
-    $user['username'] = $_SESSION['username'];
-    $user['fname'] = "Phuc";
-    $user['lname'] = "Le";
-    $user['byear'] = 2003;
+    // $user['username'] = $_SESSION['username'];
+    // $user['fname'] = "Phuc";
+    // $user['lname'] = "Le";
+    // $user['byear'] = 2003;
+    $user = getAdminInfo($_SESSION['username'],$conn);
 }
 ?>
 
@@ -44,6 +46,18 @@ if (isset($_SESSION['username'])) {
                     <li class="list-group-item">Tên: <?= $user['fname']." ".$user['lname'] ?></li>
                     <li class="list-group-item">Năm sinh: <?= $user['byear'] ?></li>
                 </ul>
+                <br/>
+                <a href="/admin/product.php">
+                    <button class="btn btn-primary">Quản lý sản phẩm</button>
+                </a>
+                <br/><br/>
+                <a href="/admin/account.php">
+                    <button class="btn btn-primary">Quản lý tài khoản Khách</button>
+                </a>
+                <br/><br/>
+                <a href="/admin/emp_account.php">
+                    <button class="btn btn-primary">Quản lý tài khoản Nhân viên</button>
+                </a>
             </div>
 
         </div>

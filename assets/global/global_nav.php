@@ -37,9 +37,13 @@ if (!isset($_SESSION)) {
           <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
         </form>
         <ul class="navbar-nav flex-grow-1 justify-content-evenly">
+          <?php if (isset($_SESSION['username'])) {
+            if ($_SESSION['tucach'] == "User") {
+          ?>
           <li class="phuc_nav">
             <a class="nav-link" href="/exchange">Trao đổi</a>
           </li>
+          <?php } }?>
           <li class="phuc_nav">
             <a class="nav-link" href="about.php">Liên hệ</a>
           </li>
