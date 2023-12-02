@@ -1,3 +1,10 @@
+<?php
+if (!isset($_SESSION)) {
+    session_start();
+}
+if (isset(($_SESSION['tucach']))) {
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,7 +21,10 @@
 </head>
 
 <body>
-    <?php include "../assets/global/global_nav.php"; ?>
+    <?php include "../assets/global/global_nav.php";
+        if ($_SESSION['tucach']=="User") {
+            // TODO: get User's account balance
+    ?>
     <div class="container">
         <form class="login" method="post" action="exchange/process_exchange.php">
             <h1>Exchange</h1>
@@ -34,13 +44,27 @@
 
             </div>
             <div class="d-flex justify-content-center align-items-center flex-column">
-                <button type="submit" class="btn btn-primary">Gửi yêu cầu tao đổi</button>
+                <button type="submit" class="btn btn-primary">Gửi yêu cầu trao đổi</button>
                 <!-- <br/> -->
                 <a href="index.php" class="text-decoration-none">Về trang chủ</a>
             </div>
         </form>
     </div>
-    <?php include "../footer.php";?>
+    <?php } else {
+    ?>
+    <div class="container d-flex justify-content-center align-items-center flex-column">
+        <h3>Nhân viên không được sử dụng chức năng này.</h3>
+        <a href="index.php" class="text-decoration-none">Về trang chủ</a>
+    </div>
+
+    <?php } include "../footer.php";?>
 </body>
 
 </html>
+
+<?php
+} else {
+header("Location: ../login");
+exit;
+}
+?>
