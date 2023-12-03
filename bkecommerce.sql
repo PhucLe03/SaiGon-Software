@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 03, 2023 at 12:49 PM
+-- Generation Time: Dec 03, 2023 at 03:41 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -45,22 +45,36 @@ INSERT INTO `admin` (`username`, `fname`, `lname`, `byear`, `password`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `bought`
+--
+
+CREATE TABLE `bought` (
+  `buyID` int(11) NOT NULL,
+  `username` varchar(45) NOT NULL,
+  `productID` varchar(45) NOT NULL,
+  `count` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `cart`
 --
 
 CREATE TABLE `cart` (
   `cartID` int(11) NOT NULL,
   `username` varchar(45) NOT NULL,
-  `product` varchar(45) NOT NULL
+  `product` varchar(45) NOT NULL,
+  `count` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `cart`
 --
 
-INSERT INTO `cart` (`cartID`, `username`, `product`) VALUES
-(1, 'phucle', 'BKC175'),
-(2, 'phucle', 'DCM113');
+INSERT INTO `cart` (`cartID`, `username`, `product`, `count`) VALUES
+(1, 'phucle', 'lc175', 1),
+(2, 'phucle', 'tn113', 1);
 
 -- --------------------------------------------------------
 
@@ -104,8 +118,8 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`productID`, `prName`, `category`, `price`, `type`, `origin`, `desc`) VALUES
-('BKC175', 'Lót chuột 175', 'MP', 100000, 'Small', 'Trung Quốc', 'Lót chuột giá rẻ'),
-('DCM113', 'Tai nghe 113', 'HP', 10000000, 'Medium', 'Trung Quốc', 'Tai nghe xịn');
+('lc175', 'Lót chuột 175', 'MP', 100000, 'Small', 'Trung Quốc', 'Lót chuột giá rẻ'),
+('tn113', 'Tai nghe 113', 'HP', 10000000, 'Medium', 'Trung Quốc', 'Tai nghe xịn');
 
 -- --------------------------------------------------------
 
@@ -141,6 +155,12 @@ ALTER TABLE `admin`
   ADD PRIMARY KEY (`username`);
 
 --
+-- Indexes for table `bought`
+--
+ALTER TABLE `bought`
+  ADD PRIMARY KEY (`buyID`);
+
+--
 -- Indexes for table `cart`
 --
 ALTER TABLE `cart`
@@ -170,6 +190,12 @@ ALTER TABLE `user`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `bought`
+--
+ALTER TABLE `bought`
+  MODIFY `buyID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `cart`

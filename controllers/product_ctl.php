@@ -9,7 +9,7 @@ function getProductByID($productID, $conn)
     $stmt->execute();
     if ($stmt->rowCount() == 1) {
         $items = $stmt->fetch();
-        $items['price'] = number_format($items['price'], 0, '', ',');
+        // $items['price'] = number_format($items['price'], 0, '', ',');
         return $items;
     } else {
         return 0;

@@ -28,14 +28,14 @@ if (isset($_SESSION['username']) && isset($_SESSION['tucach'])) {
         <body>
             <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script> -->
             <?php include "../assets/global/global_nav.php"; ?>
-            <div class=" container">
-                <h1>Cart View</h1>
-                <!-- <div class="slider"></div> -->
+            <div class="container">
+                <h1>Giỏ hàng</h1>
                 <?php
                 if ($items != 0) {
 
                     foreach ($items as $item) {
                         $_GET['productID'] = $item['product'];
+                        $_GET['count'] = $item['count'];
                         include "../product/productlistitem.php";
                     }
                 } else {
