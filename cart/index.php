@@ -18,7 +18,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['tucach'])) {
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>
                 <?php
-                $title = "Cart";
+                $title = "Giỏ hàng";
                 include "../header.php";
                 ?>
             </title>

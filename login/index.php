@@ -1,3 +1,10 @@
+<?php
+if (!isset($_SESSION)) {
+    session_start();
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -50,12 +57,18 @@
                     </div>
                 <?php } ?>
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" name="uname" placeholder="">
+                    <input type="text" class="form-control" name="uname" placeholder=""
+                    value="<?php
+                        if (isset($_SESSION['uname'])) echo $_SESSION['uname'];
+                        ?>">
                     <label class="form-label">Tên đăng nhập <span style="color: red;">*</span></label>
                 </div>
-
+                
                 <div class="form-floating mb-3">
-                    <input type="password" class="form-control" name="pass" placeholder="">
+                    <input type="password" class="form-control" name="pass" placeholder=""
+                    value="<?php
+                        if (isset($_SESSION['pass'])) echo $_SESSION['pass'];
+                    ?>">
                     <label class="form-label">Mật khẩu <span style="color: red;">*</span></label>
                 </div>
 
@@ -65,12 +78,15 @@
 
                 <hr />
                 <button type="submit" class="btn btn-primary">Đăng nhập</button>
-                <a href="index.php" class="text-decoration-none">Về trang chủ</a>
+                <a href="../index.php" class="text-decoration-none">Về trang chủ</a>
             </form>
 
             <br /><br />
             <div class="container"></div>
-
+            <?php
+                unset($_SESSION['uname']);
+                unset($_SESSION['pass']);
+            ?>
         </div>
     </div>
     <?php include "../footer.php"; ?>

@@ -12,6 +12,8 @@ if (
 
     $uname = $_POST['uname'];
     $pass = $_POST['pass'];
+    $_SESSION['uname'] = $uname;
+    $_SESSION['pass'] = $pass;
 
     $miss_uname = false;
     $miss_pass = false;
@@ -37,6 +39,8 @@ if (
         exit;
     } else {
         // Đăng nhập
+        unset($_SESSION['uname']);
+        unset($_SESSION['pass']);
         $sql = "SELECT * FROM user
                 WHERE username=?";
         $stmt = $conn->prepare($sql);
