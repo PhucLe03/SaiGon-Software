@@ -1,9 +1,15 @@
 <?php
+// ! use in cart view
+
+
+// include "../controllers/product_ctl.php";
 $imageUrl = "/assets/images/products/tainghemaunho1.jpg";
-$pName = "SP";
-$pPrice = 1000000;
-$id = $_GET['id'];
-echo $id;
+$id = $_GET['productID'];
+$product = getProductByID($id,$conn);
+$pName = $product['prName'];
+$pPrice = $product['price'];
+// $pPrice = number_format($price, 0, '', ',');
+// echo $id;
 ?>
 <style>
     .product-container {
@@ -35,7 +41,7 @@ echo $id;
     <img class="product-image" src="<?= $imageUrl ?>" />
     <div class="details-wrap">
         <h3><?= $pName ?></h3>
-        <p>$<?= $pPrice ?></p>
+        <p><?= $pPrice ?> VNĐ</p>
     </div>
     <button class="remove-button">Remove From Cart</button>
 </div>

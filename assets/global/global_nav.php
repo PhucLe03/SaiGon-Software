@@ -67,13 +67,9 @@ if (!isset($_SESSION)) {
               </li>
             <?php
             } else { ?>
-            <li class="phuc_nav">
-                <a class="nav-link" href="/cart">
-                  <span class="material-symbols-outlined"> construction </span>Quản lý</a>
-              </li>
               <li class="phuc_nav">
                 <a class="nav-link" href="/admin">
-                  <span class="material-symbols-outlined"> person </span>
+                  <span class="material-symbols-outlined"> construction </span>
                   <?= $_SESSION['username'] ?></a>
               </li>
             <?php
