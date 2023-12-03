@@ -2,11 +2,13 @@
 if (!isset($_SESSION)) {
     session_start();
 }
+include "../controllers/includer.php";
 if (isset($_SESSION['username'])) {
-    $user['username'] = $_SESSION['username'];
-    $user['fname'] = "Phuc";
-    $user['lname'] = "Le";
-    $user['byear'] = 2003;
+    // $user['username'] = $_SESSION['username'];
+    // $user['fname'] = "Phuc";
+    // $user['lname'] = "Le";
+    // $user['byear'] = 2003;
+    $user = getCusInfo($_SESSION['username'],$conn);
 }
 ?>
 
