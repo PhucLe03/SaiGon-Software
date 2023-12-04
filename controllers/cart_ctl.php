@@ -1,5 +1,16 @@
 <?php
 
+// include "product_ctl.php";
+
+function calcPrice($items,$conn) {
+    $ans = 0;
+    foreach($items as $item) {
+        $prod = getProductByID($item['product'],$conn);
+        $ans = $ans + $prod['price'] * $item['count'];
+    }
+    return formatPrice($ans);
+}
+
 function getCartItems($userID, $conn)
 {
     $sql = "SELECT * FROM `cart`
@@ -10,6 +21,21 @@ function getCartItems($userID, $conn)
     if ($stmt->rowCount() >= 1) {
         $items = $stmt->fetchAll();
         return $items;
+    } else {
+        return 0;
+    }
+}
+
+function getCartItemByID($cartID, $conn)
+{
+    $sql = "SELECT * FROM `cart`
+            WHERE cartID = :id;";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':id', $cartID);
+    $stmt->execute();
+    if ($stmt->rowCount() == 1) {
+        $item = $stmt->fetch();
+        return $item;
     } else {
         return 0;
     }
@@ -48,3 +74,12 @@ function removeFromCart($prod,$user,$conn) {
     $stmt->execute();
 }
 
+function change_amount($prod,$user,$newQuan,$conn) {
+    $sql = "UPDATE cart SET count=:ne
+            WHERE product=:pr AND username=:us;";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':ne', $newQuan);
+    $stmt->bindParam(':pr', $prod);
+    $stmt->bindParam(':us', $user);
+    $stmt->execute();
+}
