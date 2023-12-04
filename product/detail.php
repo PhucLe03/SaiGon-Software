@@ -89,7 +89,11 @@ $product['averageRating'] = 4.5;
 
                 <?php
                 if (isset($_SESSION['username']) && $_SESSION['tucach'] == "User") {
+                    $user = $_SESSION['username'];
+                    $check = checkCart($id,$user,$conn);
+                    if ($check!=true) {
                 ?>
+
                     <form id="addtocart" method="post" action="../cart/addtocart.php?">
                         <div class="row">
                             <div class="col-3">
@@ -103,7 +107,13 @@ $product['averageRating'] = 4.5;
                             </div>
                             <input type="text" name="id" placeholder="" value="<?=$id?>" style="visibility: hidden;">
                         </div>
+                        
                     </form>
+                    <?php
+                    } else {
+                        ?> <a class="btn btn-primary" href="/cart">Đi đến giỏ hàng</a> <?php
+                    }
+                    ?>
 
                 <?php
                 }
