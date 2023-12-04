@@ -16,7 +16,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['tucach'])) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>
             <?php
-            $title = "Trao đổi";
+            $title = "Xác nhận trao đổi";
             include "../header.php";
             ?>
         </title>
@@ -26,14 +26,13 @@ if (isset($_SESSION['username']) && isset($_SESSION['tucach'])) {
     <body>
         <?php include "../assets/global/global_nav.php";
         if ($_SESSION['tucach'] == "User") {
-            // TODO: get User's account balance
             $user = $_SESSION['username'];
             $info = getCusInfo($user, $conn);
             $real_balance = $info['balance'];
             $balance = formatPrice($real_balance);
         ?>
             <div class="container">
-                <h1>Trao đổi</h1>
+                <h1>Xác nhận trao đổi</h1>
                 <div class="d-flex justify-content-center">
                     <h4>Số dư tài khoản: <?= $balance ?> VNĐ </h4>
                 </div>

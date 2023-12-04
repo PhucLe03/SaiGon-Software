@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 03, 2023 at 03:41 PM
+-- Generation Time: Dec 04, 2023 at 05:26 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -55,6 +55,13 @@ CREATE TABLE `bought` (
   `count` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `bought`
+--
+
+INSERT INTO `bought` (`buyID`, `username`, `productID`, `count`) VALUES
+(1, 'phucle', 'lc175', 4);
+
 -- --------------------------------------------------------
 
 --
@@ -73,8 +80,7 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`cartID`, `username`, `product`, `count`) VALUES
-(1, 'phucle', 'lc175', 1),
-(2, 'phucle', 'tn113', 1);
+(14, 'phucle', 'tn113', 2);
 
 -- --------------------------------------------------------
 
@@ -119,7 +125,7 @@ CREATE TABLE `products` (
 
 INSERT INTO `products` (`productID`, `prName`, `category`, `price`, `type`, `origin`, `desc`) VALUES
 ('lc175', 'Lót chuột 175', 'MP', 100000, 'Small', 'Trung Quốc', 'Lót chuột giá rẻ'),
-('tn113', 'Tai nghe 113', 'HP', 10000000, 'Medium', 'Trung Quốc', 'Tai nghe xịn');
+('tn113', 'Tai nghe 113', 'HP', 1000000, 'Medium', 'Trung Quốc', 'Tai nghe xịn');
 
 -- --------------------------------------------------------
 
@@ -142,7 +148,7 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`username`, `fname`, `lname`, `byear`, `password`, `balance`) VALUES
 ('hailua', 'Phuc', 'Le', 2003, '123', 0),
-('phucle', 'Phuc', 'Le', 2003, '123', 0);
+('phucle', 'Phuc', 'Le', 2003, '123', 9600000);
 
 --
 -- Indexes for dumped tables
@@ -195,13 +201,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `bought`
 --
 ALTER TABLE `bought`
-  MODIFY `buyID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `buyID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cartID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `cartID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Constraints for dumped tables
