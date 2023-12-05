@@ -10,6 +10,10 @@ if (isset($_SESSION['username'])) {
         exit;
     }
     $user = getAdminInfo($_SESSION['username'], $conn);
+    if (!isset($_GET['id'])) {
+        header("Location: product.php");
+        exit;
+    }
 ?>
 
     <!DOCTYPE html>
@@ -20,7 +24,7 @@ if (isset($_SESSION['username'])) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>
             <?php
-            $title = "Quản lý sản phẩm";
+            $title = "Thông tin sản phẩm";
             include "../header.php";
             ?>
         </title>
@@ -32,93 +36,20 @@ if (isset($_SESSION['username'])) {
         include "../assets/global/global_nav.php";
         ?>
         <div class="container mt-5">
-            <h1>Quản lý sản phẩm</h1>
+            <h1>Sửa thông tin sản phẩm</h1>
             <div class="container-fluid">
-                <a href="/admin" class="text-decoration-none">
-                    Quay lại
-                </a>
+                <a href="/admin/product.php" class="text-decoration-none">
+                    Quản lý sản phẩm
+                </a>/ Sửa thông tin sản phẩm
             </div>
             <?php
-            $allSP = getAllSP($conn);
+            $prod = getProductByID($_GET['id'],$conn);
             ?>
             <div class="row">
-                <div class="col card">
-                    <div class="d-flex justify-content-center">
-                        <h3>Danh sách sản phẩm</h3>
-                    </div>
-                    <?php
-                    if ($allSP != 0) {
-                    ?>
-                        <table class="table table-sm table-bordered mt-3 n-table table-hover">
-                            <thead>
-                                <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">Mã</th>
-                                    <th scope="col">Tên sản phẩm</th>
-                                    <th scope="col">Giá (VNĐ)</th>
-                                    <th scope="col">Danh mục</th>
-                                    <th scope="col">Xuất xứ</th>
-                                    <!-- <th scope="col">Mô tả</th> -->
-                                    <th scope="col" colspan="3"></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php
-                                $i = 1;
-                                foreach ($allSP as $sp) {
-                                ?>
-                                    <tr>
-                                        <th scope="row">
-                                            <?php echo $i;
-                                            $i++; ?>
-                                        </th>
-                                        <td scope="row"><?= $sp['productID'] ?></td>
-                                        <td scope="row">
-                                            <a href="/product/detail.php?id=<?=$sp['productID']?>">
-                                                <?= $sp['prName'] ?>
-                                            </a>
-                                        </td>
-                                        <td scope="row"><?= formatPrice($sp['price']) ?></td>
-                                        <td scope="row"><?= $sp['category'] ?></td>
-                                        <td scope="row"><?= $sp['origin'] ?></td>
-                                        <!-- <td scope="row"><?= $sp['desc'] ?></td> -->
-                                        <td scope="row">
-                                            <a href="viewproduct.php?id=<?=$sp['productID']?>" style="color: green;">Xem</a>
-                                        </td>
-                                        <td scope="row">
-                                            <a href="editproduct.php?id=<?=$sp['productID']?>">Sửa</a>
-                                        </td>
-                                        <td scope="row">
-                                            <?php
-                                                if (!checkBuying($sp['productID'],$conn)) {
-                                            ?>
-                                            <a href="deleteproduct.php?id=<?=$sp['productID']?>" style="color: red;">Xóa</a>
-                                            <?php
-                                            } else {
-                                            ?>
-                                            <a style="color: grey;">Xóa</a>
-                                            <?php
-                                            }
-                                            ?>
-                                        </td>
-
-                                    </tr>
-                                <?php
-                                }
-                                ?>
-                            </tbody>
-                        </table>
-                    <?php
-                    } else { ?>
-                        <div class="alert alert-info" role="alert">
-                            Chưa có sản phẩm.
-                        </div>
-                    <?php } ?>
-                </div>
-                <div class="col-4">
-                    <form class="card" method="post" action="action/addsp.php">
+                <div class="">
+                    <form class="card" method="post" action="action/editsp.php">
                         <div class="d-flex justify-content-center">
-                            <h3>Thêm sản phẩm</h3>
+                            <h3>Sửa thông tin sản phẩm</h3>
                             <hr />
                         </div>
                         <div class="container-fluid">
@@ -146,34 +77,34 @@ if (isset($_SESSION['username'])) {
                         </div>
                         <div class="container-fluid">
                             <div class="row">
-                                <div class="col-5">
+                                <div class="col-2">
                                     <div class="form-floating mb-3">
-                                        <input type="text" class="form-control" name="mssp" placeholder="" value="<?php
-                                        if (isset($_SESSION['mssp'])) {
-                                            echo $_SESSION['mssp']; unset($_SESSION['mssp']);
-                                        }
-                                        ?>">
+                                        <input type="text" class="form-control" placeholder="" value="<?=$prod['productID']?>" disabled>
                                         <label class="form-label">Mã SP <span style="color: red;">*</span></label>
                                     </div>
                                 </div>
-                                <div class="col">
+                                <div class="col-4">
                                     <div class="form-floating mb-3">
                                         <input type="text" class="form-control" name="ten" placeholder="" value="<?php
-                                        if (isset($_SESSION['ten'])) {
-                                            echo $_SESSION['ten']; unset($_SESSION['ten']);
+                                        if (!isset($_SESSION['ten'])){
+                                            echo $prod['prName'];
+                                        } else {
+                                            echo $_SESSION['ten'];
+                                            unset($_SESSION['ten']);
                                         }
                                         ?>">
                                         <label class="form-label">Tên SP <span style="color: red;">*</span></label>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
                                 <div class="col">
                                     <div class="form-floating mb-3">
                                         <input type="number" min=10000 class="form-control" name="cost" placeholder="" value="<?php
-                                        if (isset($_SESSION['cost'])) {
-                                            echo $_SESSION['cost']; unset($_SESSION['cost']);
-                                        } else echo 10000;
+                                        if (!isset($_SESSION['cost'])){
+                                            echo $prod['price'];
+                                        } else {
+                                            echo $_SESSION['cost'];
+                                            unset($_SESSION['cost']);
+                                        }
                                         ?>">
                                         <label class="form-label">Giá <span style="color: red;">*</span></label>
                                     </div>
@@ -183,8 +114,11 @@ if (isset($_SESSION['username'])) {
                                 <div class="col">
                                     <div class="form-floating mb-3">
                                         <input type="text" list="cate" class="form-control" name="cate" placeholder="" value="<?php
-                                        if (isset($_SESSION['cate'])) {
-                                            echo $_SESSION['cate']; unset($_SESSION['cate']);
+                                        if (!isset($_SESSION['cate'])){
+                                            echo $prod['category'];
+                                        } else {
+                                            echo $_SESSION['cate'];
+                                            unset($_SESSION['cate']);
                                         }
                                         ?>">
                                         <label class="form-label">Danh mục <span style="color: red;">*</span></label>
@@ -204,8 +138,11 @@ if (isset($_SESSION['username'])) {
                                 <div class="col">
                                     <div class="form-floating mb-3">
                                         <input type="text" list="ori" class="form-control" name="origin" placeholder="" value="<?php
-                                        if (isset($_SESSION['origin'])) {
-                                            echo $_SESSION['origin']; unset($_SESSION['origin']);
+                                        if (!isset($_SESSION['origin'])){
+                                            echo $prod['origin'];
+                                        } else {
+                                            echo $_SESSION['origin'];
+                                            unset($_SESSION['origin']);
                                         }
                                         ?>">
                                         <label class="form-label">Xuất xứ <span style="color: red;">*</span></label>
@@ -222,16 +159,20 @@ if (isset($_SESSION['username'])) {
                                         <label class="form-label">Mô tả: <span style="color: red;">*</span></label>
                                         <textarea class="form-control" name="noidung" rows="4" 
                                         placeholder=""><?php
-                                            if (isset($_SESSION['noidung'])) {
-                                                echo $_SESSION['noidung'];
-                                            }
+                                        if (!isset($_SESSION['noidung'])){
+                                            echo $prod['desc'];
+                                        } else {
+                                            echo $_SESSION['noidung'];
+                                            unset($_SESSION['noidung']);
+                                        }
                                         ?></textarea>
                                     </div>
                             </div>
 
                             <div class="d-flex justify-content-center">
-                                <button type="submit" class="btn btn-primary">Thêm</button>
+                                <button type="submit" class="btn btn-primary">Cập nhật</button>
                             </div>
+                            <input name="mssp" value="<?=$prod['productID']?>" style="visibility:hidden;">
                         </div>
                     </form>
                 </div>

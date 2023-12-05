@@ -15,3 +15,22 @@ function getProductByID($productID, $conn)
         return 0;
     }
 }
+
+function getImg($cate) {
+    $img = "";
+    switch ($cate) {
+        case "HP":
+            $img = "../assets/images/products/tainghemau.jpg";
+            break;
+        case "PC":
+            $img = "../assets/images/pc.png";
+            break;
+        case "MP":
+            $img = "../assets/images/lotchuot.jpg";
+            break;
+        case "LT":
+            $img = "../assets/images/laptop.png";
+            break;
+    }
+    return $img;
+}
