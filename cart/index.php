@@ -8,10 +8,9 @@ if (isset($_SESSION['username']) && isset($_SESSION['tucach'])) {
     if ($_SESSION['tucach'] == "User") {
         $user = $_SESSION['username'];
         $items = getCartItems($user, $conn);
-        $total = calcPrice($items,$conn);
-?>
+        ?>
 
-        <!DOCTYPE html>
+<!DOCTYPE html>
         <html lang="en">
 
         <head>
@@ -25,7 +24,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['tucach'])) {
             </title>
             <?php include "../assets/global/global_css.php" ?>
         </head>
-
+        
         <body>
             <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script> -->
             <?php include "../assets/global/global_nav.php"; ?>
@@ -33,6 +32,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['tucach'])) {
                 <h1>Giỏ hàng</h1>
                 <?php
                 if ($items != 0) {
+                    $total = calcPrice($items,$conn);
                     ?>
                 
                 <div class="d-flex flex-row-reverse">
