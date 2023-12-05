@@ -64,10 +64,10 @@ if (isset($_SESSION['username'])) {
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-4">
+                    <div class="col-5">
                         <br/>
                         <a href="/admin/account.php">
-                            <button class="btn btn-primary">Quản lý tài khoản Khách</button>
+                            <button class="btn btn-primary">Quản lý tài khoản Khách hàng</button>
                         </a>
                     </div>
                     <div class="col-4">

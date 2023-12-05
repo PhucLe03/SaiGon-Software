@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 05, 2023 at 09:20 AM
+-- Generation Time: Dec 05, 2023 at 02:59 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -80,6 +80,13 @@ CREATE TABLE `cart` (
   `count` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `cart`
+--
+
+INSERT INTO `cart` (`cartID`, `username`, `product`, `count`) VALUES
+(20, 'phucle', 'pc123', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -117,6 +124,22 @@ CREATE TABLE `exchange` (
 -- --------------------------------------------------------
 
 --
+-- Stand-in structure for view `in4products`
+-- (See below for the actual view)
+--
+CREATE TABLE `in4products` (
+`productID` varchar(45)
+,`prName` varchar(255)
+,`price` decimal(10,0)
+,`type` varchar(45)
+,`origin` varchar(255)
+,`desc` varchar(255)
+,`category` varchar(255)
+);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `products`
 --
 
@@ -135,8 +158,11 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`productID`, `prName`, `category`, `price`, `type`, `origin`, `desc`) VALUES
-('lc175', 'Lót chuột 175', 'MP', 100000, 'Small', 'Trung Quốc', 'Lót chuột giá rẻ'),
-('tn113', 'Tai nghe 113', 'HP', 1000000, 'Medium', 'Trung Quốc', 'Tai nghe xịn');
+('lc175', 'Lót chuột 175', 'MP', 100000, 'Medium', 'Việt Nam', 'Lót chuột giá rẻ'),
+('pc111', 'Máy tính 111', 'PC', 18000000, 'Medium', 'Việt Nam', 'Máy tính đời mới'),
+('pc123', 'Máy tính 123', 'PC', 10000000, 'Medium', 'Trung', 'Máy tính Trung Quốc'),
+('tn113', 'Tai nghe 113', 'HP', 300000, 'Medium', 'Mỹ', 'Tai nghe xịn'),
+('tnbk', 'Tai nghe Bách Khoa', 'HP', 800000, 'Medium', 'Việt Nam', 'HCMUT');
 
 -- --------------------------------------------------------
 
@@ -151,6 +177,7 @@ CREATE TABLE `transaction` (
   `productA` varchar(45) NOT NULL,
   `productB` varchar(45) NOT NULL,
   `count` int(11) NOT NULL,
+  `cost` int(11) NOT NULL,
   `date_time` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -158,14 +185,14 @@ CREATE TABLE `transaction` (
 -- Dumping data for table `transaction`
 --
 
-INSERT INTO `transaction` (`transID`, `username`, `type`, `productA`, `productB`, `count`, `date_time`) VALUES
-(1, 'hailua', 'buy', 'tn113', '', 1, '2023-12-05 14:21:20'),
-(2, 'hailua', 'exchange', 'tn113', 'lc175', 1, '2023-12-05 14:32:28'),
-(3, 'phucle', 'exchange', 'lc175', 'lc175', 1, '2023-12-05 14:40:36'),
-(4, 'phucle', 'exchange', 'lc175', 'lc175', 1, '2023-12-05 14:45:21'),
-(5, 'phucle', 'exchange', 'lc175', 'tn113', 1, '2023-12-05 14:45:42'),
-(6, 'phucle', 'buy', 'tn113', '', 1, '2023-12-05 15:07:31'),
-(7, 'phucle', 'buy', 'lc175', '', 2, '2023-12-05 15:07:31');
+INSERT INTO `transaction` (`transID`, `username`, `type`, `productA`, `productB`, `count`, `cost`, `date_time`) VALUES
+(1, 'hailua', 'buy', 'tn113', '', 1, 300000, '2023-12-05 14:21:20'),
+(2, 'hailua', 'exchange', 'tn113', 'lc175', 1, -185000, '2023-12-05 14:32:28'),
+(3, 'phucle', 'exchange', 'lc175', 'lc175', 1, 5000, '2023-12-05 14:40:36'),
+(4, 'phucle', 'exchange', 'lc175', 'lc175', 1, 5000, '2023-12-05 14:45:21'),
+(5, 'phucle', 'exchange', 'lc175', 'tn113', 1, 5000, '2023-12-05 14:45:42'),
+(6, 'phucle', 'buy', 'tn113', '', 1, 300000, '2023-12-05 15:07:31'),
+(7, 'phucle', 'buy', 'lc175', '', 2, 100000, '2023-12-05 15:07:31');
 
 -- --------------------------------------------------------
 
@@ -189,6 +216,15 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`username`, `fname`, `lname`, `byear`, `password`, `balance`) VALUES
 ('hailua', 'Phuc', 'Le', 2003, '123', 850000),
 ('phucle', 'Phuc', 'Le', 2003, '123', 7485000);
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `in4products`
+--
+DROP TABLE IF EXISTS `in4products`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `in4products`  AS SELECT `p`.`productID` AS `productID`, `p`.`prName` AS `prName`, `p`.`price` AS `price`, `p`.`type` AS `type`, `p`.`origin` AS `origin`, `p`.`desc` AS `desc`, `c`.`cName` AS `category` FROM (`products` `p` join `category` `c` on(`p`.`category` = `c`.`cID`)) ;
 
 --
 -- Indexes for dumped tables
@@ -259,7 +295,7 @@ ALTER TABLE `bought`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cartID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `cartID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `exchange`
