@@ -92,3 +92,33 @@ function processExchange($user,$hh,$sp,$buyID,$cost,$conn) {
     $stmt->bindParam(':cst',$cost);
     $stmt->execute();
 }
+
+function processAddFund($user,$amount,$conn) {
+    
+    // Get balance
+    $sql = "SELECT balance FROM user
+            WHERE username=:us";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':us',$user);
+    $stmt->execute();
+    $u = $stmt->fetch();
+    $balance = $u['balance'];
+    $newbalance = $balance + $amount;
+    
+    // Update balance
+    $sql = "UPDATE user SET balance=:ba
+            WHERE username=:us;";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':ba',$newbalance);
+    $stmt->bindParam(':us',$user);
+    $stmt->execute();
+
+
+    // Add log
+    $sql = "INSERT INTO transaction (username,count,`type`,cost,date_time)
+            VALUE (:us,'1','addfund',:co,now());";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':us',$user);
+    $stmt->bindParam(':co',$amount);
+    $stmt->execute();
+}
