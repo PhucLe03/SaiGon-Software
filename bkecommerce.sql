@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 04, 2023 at 05:26 AM
+-- Generation Time: Dec 05, 2023 at 09:20 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -60,7 +60,12 @@ CREATE TABLE `bought` (
 --
 
 INSERT INTO `bought` (`buyID`, `username`, `productID`, `count`) VALUES
-(1, 'phucle', 'lc175', 4);
+(1, 'phucle', 'lc175', 2),
+(2, 'hailua', 'tn113', 0),
+(3, 'phucle', 'lc175', 0),
+(4, 'phucle', 'tn113', 1),
+(5, 'phucle', 'tn113', 1),
+(6, 'phucle', 'lc175', 2);
 
 -- --------------------------------------------------------
 
@@ -74,13 +79,6 @@ CREATE TABLE `cart` (
   `product` varchar(45) NOT NULL,
   `count` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `cart`
---
-
-INSERT INTO `cart` (`cartID`, `username`, `product`, `count`) VALUES
-(14, 'phucle', 'tn113', 2);
 
 -- --------------------------------------------------------
 
@@ -102,6 +100,19 @@ INSERT INTO `category` (`cID`, `cName`) VALUES
 ('LT', 'Laptop'),
 ('MP', 'Lót chuột'),
 ('PC', 'Máy tính để bàn');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `exchange`
+--
+
+CREATE TABLE `exchange` (
+  `exID` int(11) NOT NULL,
+  `hang` varchar(45) NOT NULL,
+  `sanpham` varchar(45) NOT NULL,
+  `username` varchar(45) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -130,6 +141,35 @@ INSERT INTO `products` (`productID`, `prName`, `category`, `price`, `type`, `ori
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `transaction`
+--
+
+CREATE TABLE `transaction` (
+  `transID` int(11) NOT NULL,
+  `username` varchar(45) NOT NULL,
+  `type` varchar(45) NOT NULL,
+  `productA` varchar(45) NOT NULL,
+  `productB` varchar(45) NOT NULL,
+  `count` int(11) NOT NULL,
+  `date_time` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `transaction`
+--
+
+INSERT INTO `transaction` (`transID`, `username`, `type`, `productA`, `productB`, `count`, `date_time`) VALUES
+(1, 'hailua', 'buy', 'tn113', '', 1, '2023-12-05 14:21:20'),
+(2, 'hailua', 'exchange', 'tn113', 'lc175', 1, '2023-12-05 14:32:28'),
+(3, 'phucle', 'exchange', 'lc175', 'lc175', 1, '2023-12-05 14:40:36'),
+(4, 'phucle', 'exchange', 'lc175', 'lc175', 1, '2023-12-05 14:45:21'),
+(5, 'phucle', 'exchange', 'lc175', 'tn113', 1, '2023-12-05 14:45:42'),
+(6, 'phucle', 'buy', 'tn113', '', 1, '2023-12-05 15:07:31'),
+(7, 'phucle', 'buy', 'lc175', '', 2, '2023-12-05 15:07:31');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `user`
 --
 
@@ -147,8 +187,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`username`, `fname`, `lname`, `byear`, `password`, `balance`) VALUES
-('hailua', 'Phuc', 'Le', 2003, '123', 0),
-('phucle', 'Phuc', 'Le', 2003, '123', 9600000);
+('hailua', 'Phuc', 'Le', 2003, '123', 850000),
+('phucle', 'Phuc', 'Le', 2003, '123', 7485000);
 
 --
 -- Indexes for dumped tables
@@ -181,11 +221,23 @@ ALTER TABLE `category`
   ADD PRIMARY KEY (`cID`);
 
 --
+-- Indexes for table `exchange`
+--
+ALTER TABLE `exchange`
+  ADD PRIMARY KEY (`exID`);
+
+--
 -- Indexes for table `products`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`productID`),
   ADD KEY `category` (`category`);
+
+--
+-- Indexes for table `transaction`
+--
+ALTER TABLE `transaction`
+  ADD PRIMARY KEY (`transID`);
 
 --
 -- Indexes for table `user`
@@ -201,13 +253,25 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `bought`
 --
 ALTER TABLE `bought`
-  MODIFY `buyID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `buyID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cartID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `cartID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
+--
+-- AUTO_INCREMENT for table `exchange`
+--
+ALTER TABLE `exchange`
+  MODIFY `exID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `transaction`
+--
+ALTER TABLE `transaction`
+  MODIFY `transID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Constraints for dumped tables
