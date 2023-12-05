@@ -8,7 +8,6 @@ if (isset($_SESSION['username']) && isset($_SESSION['tucach'])) {
     if ($_SESSION['tucach'] == "User") {
         $user = $_SESSION['username'];
         $items = getCartItems($user, $conn);
-        $total = calcPrice($items,$conn);
 ?>
 
         <!DOCTYPE html>
@@ -19,7 +18,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['tucach'])) {
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>
                 <?php
-                $title = "Giỏ hàng";
+                $title = "Xác nhận và thanh toán";
                 include "../header.php";
                 ?>
             </title>
@@ -30,35 +29,53 @@ if (isset($_SESSION['username']) && isset($_SESSION['tucach'])) {
             <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script> -->
             <?php include "../assets/global/global_nav.php"; ?>
             <div class="container">
-                <h1>Giỏ hàng</h1>
+                <h1>Xác nhận và thanh toán</h1>
+            </div>
+            <div class="container-fluid">
                 <?php
-                if ($items != 0) {
-                    ?>
-                
-                <div class="d-flex flex-row-reverse">
-                    <h4>Tổng tiền tạm tính: <?=$total?> VNĐ</h4>
-                </div>
-                <?php
-
-                    foreach ($items as $item) {
-                        $_GET['productID'] = $item['product'];
-                        $_GET['count'] = $item['count'];
-                        $_GET['cartID'] = $item['cartID'];
-                        include "../product/productlistitem.php";
-                    }
+                if ($items!=0) {
                 ?>
-
-                <?php
-                } else {
-                ?>
-                    <div class="alert alert-info .w-450" role="alert">
-                        Giỏ hàng còn trống!
+                <div class="row">
+                    <div class="col"></div>
+                    <div class="col-5 card">
+                        <h4 class="d-flex justify-content-center">Đơn hàng của bạn</h4>
+                        <?php
+                            $realPrice = 0;
+                            foreach($items as $item) {
+                                $_GET['count'] = $item['count'];
+                                $_GET['productID'] = $item['product'];
+                                $prod = getProductByID($item['product'],$conn);
+                                $ttPrice = $prod['price'] * $item['count'];
+                                $realPrice = $realPrice + $ttPrice;
+                        ?>
+                        
+                        <?php include "../product/productlistpay.php"; }?>
+                        <br/>
+                        <div class="d-flex flex-row-reverse">
+                            <h4>Tổng cộng: <?= formatPrice($realPrice) ?> VNĐ</h4>
+                        </div>
                     </div>
-                    <a href="/index.php" class="btn btn-primary">Tiếp tục mua sắm</a>
+                    <div class="col"></div>
+                    <div class="col-5 card">
+                        <h4 class="d-flex justify-content-center">Thanh toán</h4>
+                        <img src="./paymethod.PNG">
+                        <form method="post" action="action/payall.php">
+                            <div class="d-flex justify-content-center">
+                                <button type="submit" class="phuc_button">Xác nhận</button>
+                            </div>
+                        </form>
+                        
+                    </div>
+                    <div class="col"></div>
+                </div>
+
+
                 <?php
                 }
+                // unset($_SESSION['cartID']);
                 ?>
             </div>
+
             <?php include "../footer.php"; ?>
         </body>
 
@@ -66,11 +83,11 @@ if (isset($_SESSION['username']) && isset($_SESSION['tucach'])) {
 
 <?php
     } else {
-        header("Location: login/index.php");
+        header("Location: ../login/index.php");
         exit;
     }
 } else {
-    header("Location: login/index.php");
+    header("Location: ../login/index.php");
     exit;
 }
 ?>
