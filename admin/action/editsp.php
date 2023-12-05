@@ -63,7 +63,8 @@ if (
         try {
             $type = "Medium";
             $sql = "UPDATE products
-                    SET prName=:na ,price=:pr, category=:ca, `type`=:ty, origin=:ori, `desc`=:de;);";
+                    SET prName=:na ,price=:pr, category=:ca, `type`=:ty, origin=:ori, `desc`=:de
+                    WHERE productID=:id";
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(':na', $ten);
             $stmt->bindParam(':pr', $cost);
@@ -71,6 +72,7 @@ if (
             $stmt->bindParam(':ty', $type);
             $stmt->bindParam(':ori', $origin);
             $stmt->bindParam(':de', $noidung);
+            $stmt->bindParam(':id', $mssp);
             $stmt->execute();
             
             unset($_SESSION['ten']);
