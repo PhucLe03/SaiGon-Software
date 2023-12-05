@@ -47,17 +47,37 @@ if (isset($_SESSION['username'])) {
                     <li class="list-group-item">Năm sinh: <?= $user['byear'] ?></li>
                 </ul>
                 <br/>
-                <a href="/admin/product.php">
-                    <button class="btn btn-primary">Quản lý sản phẩm</button>
-                </a>
-                <br/><br/>
-                <a href="/admin/account.php">
-                    <button class="btn btn-primary">Quản lý tài khoản Khách</button>
-                </a>
-                <br/><br/>
-                <a href="/admin/emp_account.php">
-                    <button class="btn btn-primary">Quản lý tài khoản Nhân viên</button>
-                </a>
+                <div class="row">
+                    <div class="col-4">
+                        <a href="/admin/product.php">
+                            <button class="btn btn-primary">Quản lý sản phẩm</button>
+                        </a>
+                    </div>
+                    <div class="col-4">
+                        <a href="/admin/commerce.php">
+                            <button class="btn btn-primary">Quản lý mua hàng</button>
+                        </a>
+                    </div>
+                    <div class="col-4">
+                        <a href="/admin/exchange.php">
+                            <button class="btn btn-primary">Quản lý trao đổi</button>
+                        </a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <br/>
+                        <a href="/admin/account.php">
+                            <button class="btn btn-primary">Quản lý tài khoản Khách</button>
+                        </a>
+                    </div>
+                    <div class="col-4">
+                        <br/>
+                        <a href="/admin/emp_account.php">
+                            <button class="btn btn-primary">Quản lý tài khoản Nhân viên</button>
+                        </a>
+                    </div>
+                </div>
             </div>
 
         </div>
