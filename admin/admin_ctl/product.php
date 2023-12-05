@@ -23,3 +23,15 @@ function getAllCategory($conn) {
         return 0;
     }
 }
+
+function checkBuying($productID,$conn) {
+    $sql = "SELECT * FROM cart 
+            WHERE product=?;";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute([$productID]);
+    if ($stmt->rowCount()>0) {
+        return true;
+    } else {
+        return false;
+    }
+}
