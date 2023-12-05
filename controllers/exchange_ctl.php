@@ -82,11 +82,13 @@ function processExchange($user,$hh,$sp,$buyID,$cost,$conn) {
 
 
     // Add log
-    $sql = "INSERT INTO transaction (username,productA,productB,count,type,date_time)
-            VALUE (:us,:prA,:prB,'1','exchange',now());";
+    $sql = "INSERT INTO transaction (username,productA,productB,count,`type`,cost,date_time)
+            VALUE (:us,:prA,:prB,'1','exchange',:cst,now());";
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':us',$user);
     $stmt->bindParam(':prA',$hh);
     $stmt->bindParam(':prB',$sp);
+    $stmt->bindParam(':prB',$sp);
+    $stmt->bindParam(':cst',$cost);
     $stmt->execute();
 }

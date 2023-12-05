@@ -47,11 +47,12 @@ function payProduct($cartID,$conn) {
     $stmt->execute();
 
     // Add log
-    $sql = "INSERT INTO transaction (username,productA,count,type,date_time)
-            VALUE (:us,:pr,:co,'buy',now());";
+    $sql = "INSERT INTO transaction (username,productA,count,`type`,cost,date_time)
+            VALUE (:us,:pr,:co,'buy',:cs,now());";
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':us',$cart['username']);
     $stmt->bindParam(':pr',$cart['product']);
     $stmt->bindParam(':co',$cart['count']);
+    $stmt->bindParam(':cs',$totalpayment);
     $stmt->execute();
 }
