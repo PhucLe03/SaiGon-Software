@@ -28,15 +28,17 @@ if (
     }
     
     $cate = $_POST['cate'];
-    
+    $flag = false;
     $allcates = getAllCategory($conn);
     foreach ($allcates as $c) {
         if ($c['cID']==$cate) {
-            break;
+            $flag = true; break;
         }
+    }
+    if ($flag!=true) {
         $em  = "o"; $_SESSION['error'] = $em;
         $_SESSION['emess'] = "Danh mục không hợp lệ";
-        header("Location: ../product.php");
+        header("Location: ../editproduct.php?id=$mssp");
         exit;
     }
 
@@ -72,7 +74,7 @@ if (
             $stmt->bindParam(':ori', $origin);
             $stmt->bindParam(':de', $noidung);
             $stmt->execute();
-            
+
             unset($_SESSION['mssp']); 
             unset($_SESSION['ten']);
             unset($_SESSION['cost']);
