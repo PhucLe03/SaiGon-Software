@@ -59,7 +59,7 @@ $ttPrice = number_format($tPrice, 0, '', ',');
         <hr />
         <div class="row">
             <div class="d-flex flex-row-reverse">
-                <h6>Tổng cộng: <?= $ttPrice ?> VNĐ</h6>
+                <h6>Thành tiền: <?= $ttPrice ?> VNĐ</h6>
             </div>
         </div>
     </div>
