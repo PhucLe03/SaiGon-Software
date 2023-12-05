@@ -37,6 +37,11 @@ if (isset($_SESSION['username']) && isset($_SESSION['tucach'])) {
                 <div class="d-flex justify-content-center">
                     <h4>Số dư tài khoản: <?= $balance ?> VNĐ </h4>
                 </div>
+                <?php if (isset($_SESSION['exsuccess'])) { ?>
+                    <div class="alert alert-success" role="alert">
+                        <?php echo $_SESSION['exsuccess']; unset($_SESSION['exsuccess']); ?>
+                    </div>
+                <?php } ?>
                 <?php
                 $items = getBoughtProd($user, $conn);
                 if ($items != 0) {
@@ -48,7 +53,6 @@ if (isset($_SESSION['username']) && isset($_SESSION['tucach'])) {
                     <form method="post" action="../exchange/action/process_exchange.php">
                         <hr /> <br />
                         <?php
-                        // $err_stmt = $_GET['error'];
                         if (isset($_GET['error'])) { ?>
                             <div class="alert alert-danger" role="alert">
                                 <?php

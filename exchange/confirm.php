@@ -102,10 +102,10 @@ if (isset($_SESSION['username']) && isset($_SESSION['tucach'])
                             <br/>
                             <button type="submit" class="btn btn-primary">Xác nhận yêu cầu trao đổi</button>
                         </div>
-                        <input name="buyID" value="" style="visibility: hidden;">
-                        <input name="hanghoa" value="" style="visibility: hidden;">
-                        <input name="sanpham" value="" style="visibility: hidden;">
-                        <input name="nguoidung" value="" style="visibility: hidden;">
+                        <input name="buyID" value="<?=$_SESSION['buyID']?>" style="visibility: hidden;">
+                        <input name="hanghoa" value="<?=$_SESSION['hh']?>" style="visibility: hidden;">
+                        <input name="sanpham" value="<?=$_SESSION['sp']?>" style="visibility: hidden;">
+                        <input name="giatien" value="<?=$balance_change?>" style="visibility: hidden;">
                     </form>
                 <div class="d-flex justify-content-center">
                     <a href="index.php" class="text-decoration-none">Về trang chủ</a>

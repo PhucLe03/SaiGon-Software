@@ -45,4 +45,13 @@ function payProduct($cartID,$conn) {
     $stmt->bindParam(':ba',$newbalance);
     $stmt->bindParam(':us',$cart['username']);
     $stmt->execute();
+
+    // Add log
+    $sql = "INSERT INTO transaction (username,productA,count,type,date_time)
+            VALUE (:us,:pr,:co,'buy',now());";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':us',$cart['username']);
+    $stmt->bindParam(':pr',$cart['product']);
+    $stmt->bindParam(':co',$cart['count']);
+    $stmt->execute();
 }
