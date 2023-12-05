@@ -37,6 +37,11 @@ if (isset($_SESSION['username']) && isset($_SESSION['tucach'])) {
                 <div class="d-flex justify-content-center">
                     <h4>Số dư tài khoản: <?= $balance ?> VNĐ </h4>
                 </div>
+                <?php if (isset($_SESSION['exsuccess'])) { ?>
+                    <div class="alert alert-success" role="alert">
+                        <?php echo $_SESSION['exsuccess']; unset($_SESSION['exsuccess']); ?>
+                    </div>
+                <?php } ?>
                 <?php
                 $items = getBoughtProd($user, $conn);
                 if ($items != 0) {
@@ -45,8 +50,27 @@ if (isset($_SESSION['username']) && isset($_SESSION['tucach'])) {
                         exit;
                     }
                 ?>
-                    <form method="post" action="exchange/process_exchange.php">
+                    <form method="post" action="../exchange/action/process_exchange.php">
                         <hr /> <br />
+                        <?php
+                        if (isset($_GET['error'])) { ?>
+                            <div class="alert alert-danger" role="alert">
+                                <?php
+                                $err_stmt = $_GET['error'];
+                                if ($err_stmt == "1") {
+                                    $err = "Mã hàng đã mua đã hết lượt trao đổi hoặc không hợp lệ";
+                                } else if ($err_stmt == "2") {
+                                    $err = "Mã sản phẩm muốn trao đổi không hợp lệ";
+                                } else if ($err_stmt == "3") {
+                                    $err = "Các thông tin trao đổi không được để trống";
+                                } else {
+                                    $err = "Đã có lỗi xảy ra";
+                                }
+                                // echo $err;
+                                ?>
+                                <?= $err ?>
+                            </div>
+                        <?php } ?>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-floating mb-3">
@@ -75,7 +99,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['tucach'])) {
                                         <?php
                                         foreach ($pro as $c) {
                                         ?>
-                                            <option value="<?= $c['productID'] ?>"> <?= $p['prName'] ?> </option>
+                                            <option value="<?= $c['productID'] ?>"> <?= $c['prName'] ?> </option>
 
                                         <?php
                                         }

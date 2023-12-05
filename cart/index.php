@@ -8,7 +8,6 @@ if (isset($_SESSION['username']) && isset($_SESSION['tucach'])) {
     if ($_SESSION['tucach'] == "User") {
         $user = $_SESSION['username'];
         $items = getCartItems($user, $conn);
-        $total = calcPrice($items,$conn);
 ?>
 
         <!DOCTYPE html>
@@ -33,12 +32,13 @@ if (isset($_SESSION['username']) && isset($_SESSION['tucach'])) {
                 <h1>Giỏ hàng</h1>
                 <?php
                 if ($items != 0) {
-                    ?>
-                
-                <div class="d-flex flex-row-reverse">
-                    <h4>Tổng tiền tạm tính: <?=$total?> VNĐ</h4>
-                </div>
-                <?php
+                    $total = calcPrice($items, $conn);
+                ?>
+
+                    <div class="d-flex flex-row-reverse">
+                        <h4>Tổng tiền tạm tính: <?= $total ?> VNĐ</h4>
+                    </div>
+                    <?php
 
                     foreach ($items as $item) {
                         $_GET['productID'] = $item['product'];
@@ -46,7 +46,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['tucach'])) {
                         $_GET['cartID'] = $item['cartID'];
                         include "../product/productlistitem.php";
                     }
-                ?>
+                    ?>
 
                 <?php
                 } else {
@@ -58,6 +58,9 @@ if (isset($_SESSION['username']) && isset($_SESSION['tucach'])) {
                 <?php
                 }
                 ?>
+                <div class="d-flex flex-row-reverse">
+                    <a href="/cart/bkpay.php" class="phuc_button">Thanh toán tất cả</a>
+                </div>
             </div>
             <?php include "../footer.php"; ?>
         </body>

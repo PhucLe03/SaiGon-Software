@@ -7,11 +7,12 @@ $imageUrl = "/assets/images/products/tainghemaunho1.jpg";
 $id = $_GET['productID'];
 $product = getProductByID($id, $conn);
 $pName = $product['prName'];
-$pPrice = $product['price'];
-$pQuan = $_GET['count'];
+if ($_GET['type']=="hh") {
+    $pPrice = evaluate($product['price']);
+} else {
+    $pPrice = $product['price'];
+}
 $sPrice = number_format($pPrice, 0, '', ',');
-$tPrice = $pPrice * $pQuan;
-$ttPrice = number_format($tPrice, 0, '', ',');
 // $pPrice = number_format($price, 0, '', ',');
 // echo $id;
 ?>
@@ -45,21 +46,12 @@ $ttPrice = number_format($tPrice, 0, '', ',');
     <img class="product-image" src="<?= $imageUrl ?>" />
     <div class="details-wrap">
         <div class="row">
-            <div class="col-8">
+            <div class="col">
                 <a href="/product/detail.php?id=<?= $product['productID'] ?>">
                     <h4><?= $pName ?></h4>
                 </a>
-                <h6>Đơn giá: <?= $sPrice ?> VNĐ</h6>
-            </div>
-            <div class="col">
-                <br />
-                <h6>Số lượng: <?= $pQuan ?></h6>
-            </div>
-        </div>
-        <hr />
-        <div class="row">
-            <div class="d-flex flex-row-reverse">
-                <h6>Thành tiền: <?= $ttPrice ?> VNĐ</h6>
+                <hr />
+                <h6>Giá: <?= $sPrice ?> VNĐ</h6>
             </div>
         </div>
     </div>

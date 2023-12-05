@@ -42,13 +42,18 @@ if (isset($_SESSION['username']) && isset($_SESSION['tucach'])) {
                 if ($item!=0) {
                     $_GET['count'] = $item['count'];
                     $_GET['productID'] = $item['product'];
+                    $prod = getProductByID($item['product'],$conn);
+                    $ttPrice = $prod['price'] * $item['count'];
                 ?>
                 <div class="row">
                     <div class="col"></div>
                     <div class="col-5 card">
                         <h4 class="d-flex justify-content-center">Đơn hàng của bạn</h4>
                         <?php include "../product/productlistpay.php"; ?>
-                        
+                        <br/>
+                        <div class="d-flex flex-row-reverse">
+                            <h4>Tổng cộng: <?= $ttPrice ?> VNĐ</h4>
+                        </div>
                     </div>
                     <div class="col"></div>
                     <div class="col-5 card">

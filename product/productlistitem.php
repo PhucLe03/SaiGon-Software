@@ -72,7 +72,7 @@ $ttPrice = number_format($tPrice, 0, '', ',');
             </div>
             <div class="col">
                 <form method="post" action="../cart/change_amount.php?id=<?= $id ?>">
-                    <div class="form-floating mb-3 col-5">
+                    <div class="form-floating mb-3 col-7">
                         <input type="number" min="1" class="form-control" name="sl" placeholder="" value="<?= $pQuan ?>">
                         <label class="form-label">Số lượng <span style="color: red;">*</span></label>
                     </div>
