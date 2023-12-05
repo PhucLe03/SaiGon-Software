@@ -3,9 +3,9 @@
 
 
 // include "../controllers/product_ctl.php";
-$imageUrl = "/assets/images/products/tainghemaunho1.jpg";
 $id = $_GET['productID'];
 $product = getProductByID($id, $conn);
+$imageUrl = getImg($product['category']);
 $pName = $product['prName'];
 $pPrice = $product['price'];
 $pQuan = $_GET['count'];

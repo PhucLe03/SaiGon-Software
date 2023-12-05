@@ -37,6 +37,9 @@ $product['imageUrl'] = "../assets/images/products/tainghemau.jpg";
 $product['fPrice'] = formatPrice($product['price']);
 // $product['name'] = "Tai nghe";
 $product['averageRating'] = 4.5;
+// include "../controllers/product_ctl.php";
+$product['imageUrl'] = getImg($product['category']);
+
 // $product['price'] = 1000000;
 // $product['description'] = "Tai nghe xịn";
 ?>
@@ -79,7 +82,7 @@ $product['averageRating'] = 4.5;
     <?php include "../assets/global/global_nav.php"; ?>
     <div class="container">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-6">
                 <img src="<?php echo $product['imageUrl']; ?>" />
             </div>
             <div class="col-md-6">
@@ -118,6 +121,8 @@ $product['averageRating'] = 4.5;
                 <?php
                 }
                 ?>
+                <hr/>
+                <p>Xuất xứ: <?=$product['origin']?></p>
                 <h4>Mô tả</h4>
                 <p><?php echo $product['desc']; ?></p>
             </div>

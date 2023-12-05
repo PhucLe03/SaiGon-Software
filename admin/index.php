@@ -4,12 +4,11 @@ if (!isset($_SESSION)) {
 }
 include "../controllers/includer.php";
 if (isset($_SESSION['username'])) {
-    // $user['username'] = $_SESSION['username'];
-    // $user['fname'] = "Phuc";
-    // $user['lname'] = "Le";
-    // $user['byear'] = 2003;
+    if ($_SESSION['tucach']!="Admin") {
+        header("Location: ../login");
+        exit;
+    }
     $user = getAdminInfo($_SESSION['username'],$conn);
-}
 ?>
 
 <!DOCTYPE html>
@@ -20,7 +19,7 @@ if (isset($_SESSION['username'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
         <?php
-        $title = "BKEC - Trang cá nhân";
+        $title = "BKEC Admin - Trang cá nhân";
         include "../header.php";
         ?>
     </title>
@@ -86,3 +85,9 @@ if (isset($_SESSION['username'])) {
 </body>
 
 </html>
+
+<?php } else {
+header("Location: ../login");
+exit;
+}
+?>
