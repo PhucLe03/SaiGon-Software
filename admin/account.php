@@ -55,9 +55,10 @@ if (isset($_SESSION['username'])) {
                                     <th scope="col">#</th>
                                     <th scope="col">Tên đăng nhập</th>
                                     <th scope="col">Tên Khách hàng</th>
+                                    <th scope="col">Năm sinh</th>
                                     <th scope="col">Số lần giao dịch</th>
                                     <th scope="col">Số dư tài khoản (VNĐ)</th>
-                                    <th scope="col" colspan="2"></th>
+                                    <th scope="col" colspan="3"></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -75,16 +76,20 @@ if (isset($_SESSION['username'])) {
                                         <td scope="row">
                                             <?= $sp['fname']." ".$sp['lname'] ?>
                                         </td>
+                                        <td scope="row"><?= $sp['byear'] ?></td>
                                         <td scope="row"><?= $count ?></td>
                                         <td scope="row"><?= formatPrice($sp['balance']) ?></td>
                                         <td scope="row">
-                                            <a href="editproduct.php?id=<?=$sp['username']?>">Sửa</a>
+                                            <a href="viewaccount.php?id=<?=$sp['username']?>" style="color: green;">Xem</a>
+                                        </td>
+                                        <td scope="row">
+                                            <a href="editaccount.php?id=<?=$sp['username']?>" sty>Sửa</a>
                                         </td>
                                         <td scope="row">
                                             <?php
-                                                if (!checkBuying($sp['username'],$conn)) {
+                                                if (!checkBalance($sp['username'],$conn)) {
                                             ?>
-                                            <a href="deleteproduct.php?id=<?=$sp['username']?>" style="color: red;">Xóa</a>
+                                            <a href="deleteaccount.php?id=<?=$sp['username']?>" style="color: red;">Xóa</a>
                                             <?php
                                             } else {
                                             ?>
@@ -108,7 +113,7 @@ if (isset($_SESSION['username'])) {
                     <?php } ?>
                 </div>
                 <div class="col-5">
-                    <form class="card" method="post" action="action/addcus.php">
+                    <form class="card" method="post" action="action/addkh.php">
                         <div class="d-flex justify-content-center">
                             <h3>Thêm tài khoản</h3>
                             <hr />
@@ -160,7 +165,7 @@ if (isset($_SESSION['username'])) {
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col">
+                                <div class="col-7">
                                     <div class="form-floating mb-3">
                                         <input type="text" class="form-control" name="uname" placeholder="" value="<?php
                                         if (isset($_SESSION['uname'])) {
@@ -168,6 +173,16 @@ if (isset($_SESSION['username'])) {
                                         };
                                         ?>">
                                         <label class="form-label">Tên đăng nhập <span style="color: red;">*</span></label>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-floating mb-3">
+                                        <input type="number" class="form-control" name="byear" placeholder="" value="<?php
+                                        if (isset($_SESSION['byear'])) {
+                                            echo $_SESSION['byear']; unset($_SESSION['byear']);
+                                        };
+                                        ?>">
+                                        <label class="form-label">Năm sinh <span style="color: red;">*</span></label>
                                     </div>
                                 </div>
                             </div>
