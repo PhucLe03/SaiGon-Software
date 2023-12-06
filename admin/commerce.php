@@ -76,7 +76,7 @@ if (isset($_SESSION['username'])) {
                                         </th>
                                         <td scope="row"><?= $ts['username'] ?></td>
                                         <td scope="row">
-                                            <a href="/admin/viewuser.php?id=<?=$ts['username']?>">
+                                            <a href="/admin/viewaccount.php?id=<?=$ts['username']?>">
                                                 <?= $cusname ?>
                                             </a>
                                         </td>

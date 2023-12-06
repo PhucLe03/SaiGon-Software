@@ -28,6 +28,18 @@ if (
     // }
     
     $cate = $_POST['cate'];
+    
+    $ten = $_POST['ten'];
+    $cost = $_POST['cost'];
+    $origin = $_POST['origin'];
+    $noidung = $_POST['noidung'];
+
+    $_SESSION['ten'] = $ten;
+    $_SESSION['cost'] = $cost;
+    $_SESSION['cate'] = $cate;
+    $_SESSION['origin'] = $origin;
+    $_SESSION['noidung'] = $noidung;
+    
     $flag = false;
     $allcates = getAllCategory($conn);
     foreach ($allcates as $c) {
@@ -42,17 +54,6 @@ if (
         exit;
     }
 
-    $ten = $_POST['ten'];
-    $cost = $_POST['cost'];
-    $origin = $_POST['origin'];
-    $noidung = $_POST['noidung'];
-
-    $_SESSION['ten'] = $ten;
-    $_SESSION['cost'] = $cost;
-    $_SESSION['cate'] = $cate;
-    $_SESSION['origin'] = $origin;
-    $_SESSION['noidung'] = $noidung;
-    
     if (empty($mssp) || empty($ten) || empty($cate) || 
         empty($origin) || empty($noidung)) {
         $em = "m"; $_SESSION['error'] = $em;
