@@ -48,12 +48,6 @@ if (
             $flag = true; break;
         }
     }
-    if ($flag!=true) {
-        $em  = "o"; $_SESSION['error'] = $em;
-        $_SESSION['emess'] = "Danh mục không hợp lệ";
-        header("Location: ../editproduct.php?id=$mssp");
-        exit;
-    }
     
     if (empty($mssp) || empty($ten) || empty($cate) || 
         empty($origin) || empty($noidung)) {
@@ -61,6 +55,12 @@ if (
         header("Location: ../product.php");
         exit;
     } else {
+        if ($flag!=true) {
+            $em  = "o"; $_SESSION['error'] = $em;
+            $_SESSION['emess'] = "Danh mục không hợp lệ";
+            header("Location: ../product.php?id=$mssp");
+            exit;
+        }
         // Thêm SP
         try {
             $type = "Medium";
