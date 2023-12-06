@@ -174,8 +174,8 @@ CREATE TABLE `transaction` (
   `transID` int(11) NOT NULL,
   `username` varchar(45) NOT NULL,
   `type` varchar(45) NOT NULL,
-  `productA` varchar(45) NOT NULL,
-  `productB` varchar(45) NOT NULL,
+  `productA` varchar(45) NULL,
+  `productB` varchar(45) NULL,
   `count` int(11) NOT NULL,
   `cost` int(11) NOT NULL,
   `date_time` datetime NOT NULL
