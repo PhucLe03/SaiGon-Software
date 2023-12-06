@@ -53,10 +53,10 @@ $price = 2000000;
     <?php
     include "assets/global/global_nav.php";
     $slides = [
-        ['imageUrl' => './assets/images/slider/1.jpg', 'ref' => '/categories/pc.php'],
-        ['imageUrl' => './assets/images/slider/118_km_pc_900.png', 'ref' => '/categories/pc.php'],
-        ['imageUrl' => './assets/images/slider/20230224_vIMZwzLoe8zo4oMq.jpeg', 'ref' => '/categories/pc.php'],
-        ['imageUrl' => './assets/images/slider/pc_gaming_02e3e03f1a78496f9a17ddd5bbc4cdac.webp', 'ref' => '/categories/pc.php'],
+        ['imageUrl' => './assets/images/slider/1.jpg', 'ref' => '/categories/list.php?c=PC'],
+        ['imageUrl' => './assets/images/slider/118_km_pc_900.png', 'ref' => '/categories/list.php?c=PC'],
+        ['imageUrl' => './assets/images/slider/20230224_vIMZwzLoe8zo4oMq.jpeg', 'ref' => '/categories/list.php?c=PC'],
+        ['imageUrl' => './assets/images/slider/pc_gaming_02e3e03f1a78496f9a17ddd5bbc4cdac.webp', 'ref' => '/categories/list.php?c=PC'],
         // ...
     ];
     ?>

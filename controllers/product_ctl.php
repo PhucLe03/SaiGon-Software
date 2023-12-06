@@ -16,6 +16,48 @@ function getProductByID($productID, $conn)
     }
 }
 
+function getProductByCate($category, $conn)
+{
+    $sql = "SELECT * FROM `products`
+            WHERE category = :id;";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':id', $category);
+    $stmt->execute();
+    if ($stmt->rowCount() > 1) {
+        $items = $stmt->fetchAll();
+        return $items;
+    } else {
+        return 0;
+    }
+}
+
+function getAllCategory($conn) {
+    $sql = "SELECT * FROM category;";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+    if ($stmt->rowCount()>0) {
+        $sp = $stmt->fetchAll();
+        return $sp;
+    } else {
+        return 0;
+    }
+}
+
+function getCategoryName($cateID, $conn)
+{
+    $sql = "SELECT * FROM `category`
+            WHERE cID = :id;";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':id', $cateID);
+    $stmt->execute();
+    if ($stmt->rowCount() == 1) {
+        $item = $stmt->fetch();
+        return $item['cName'];
+    } else {
+        return 0;
+    }
+}
+
 function getImg($cate) {
     $img = "";
     switch ($cate) {

@@ -12,18 +12,6 @@ function getAllSP($conn) {
     }
 }
 
-function getAllCategory($conn) {
-    $sql = "SELECT * FROM category;";
-    $stmt = $conn->prepare($sql);
-    $stmt->execute();
-    if ($stmt->rowCount()>0) {
-        $sp = $stmt->fetchAll();
-        return $sp;
-    } else {
-        return 0;
-    }
-}
-
 function checkBuying($productID,$conn) {
     $sql = "SELECT * FROM cart 
             WHERE product=?;";

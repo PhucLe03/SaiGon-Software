@@ -73,7 +73,7 @@ if (isset($_SESSION['username'])) {
                     <div class="col-4">
                         <br/>
                         <a href="/admin/emp_account.php">
-                            <button class="btn btn-primary">Quản lý tài khoản Nhân viên</button>
+                            <button class="btn btn-primary">Xem tài khoản Nhân viên</button>
                         </a>
                     </div>
                 </div>
