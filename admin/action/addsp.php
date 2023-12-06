@@ -19,6 +19,20 @@ if (
     include "../../controllers/includer.php";
 
     $mssp = $_POST['mssp'];
+    
+    $cate = $_POST['cate'];
+    
+    $ten = $_POST['ten'];
+    $cost = $_POST['cost'];
+    $origin = $_POST['origin'];
+    $noidung = $_POST['noidung'];
+
+    $_SESSION['mssp'] = $mssp;
+    $_SESSION['ten'] = $ten;
+    $_SESSION['cost'] = $cost;
+    $_SESSION['cate'] = $cate;
+    $_SESSION['origin'] = $origin;
+    $_SESSION['noidung'] = $noidung;
 
     $check = getProductByID($mssp,$conn);
     if ($check!=0) {
@@ -26,8 +40,7 @@ if (
         header("Location: ../product.php");
         exit;
     }
-    
-    $cate = $_POST['cate'];
+
     $flag = false;
     $allcates = getAllCategory($conn);
     foreach ($allcates as $c) {
@@ -41,18 +54,6 @@ if (
         header("Location: ../editproduct.php?id=$mssp");
         exit;
     }
-
-    $ten = $_POST['ten'];
-    $cost = $_POST['cost'];
-    $origin = $_POST['origin'];
-    $noidung = $_POST['noidung'];
-
-    $_SESSION['mssp'] = $mssp;
-    $_SESSION['ten'] = $ten;
-    $_SESSION['cost'] = $cost;
-    $_SESSION['cate'] = $cate;
-    $_SESSION['origin'] = $origin;
-    $_SESSION['noidung'] = $noidung;
     
     if (empty($mssp) || empty($ten) || empty($cate) || 
         empty($origin) || empty($noidung)) {
