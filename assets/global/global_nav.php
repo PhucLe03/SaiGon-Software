@@ -3,6 +3,12 @@ $option = 0;
 if (!isset($_SESSION)) {
   session_start();
 }
+$cates = [
+  ['id'=>'PC','name'=>"Máy tính để bàn"],
+  ['id'=>'HP','name'=>"Tai nghe"],
+  ['id'=>'MP','name'=>"Lót chuột"],
+  ['id'=>'LT','name'=>"Laptop"]
+]
 ?>
 
 <style>
@@ -22,9 +28,14 @@ if (!isset($_SESSION)) {
           <li class="nav-item dropdown">
             <a href="" class="dropdown-toggle phuc_nav_button phuc_nav" data-bs-toggle="dropdown">Danh mục sản phẩm<b class="caret"></b></a>
             <ul class="dropdown-menu ">
-              <li><a href="/categories/pc.php" class="dropdown-item">PC</a></li>
-              <li><a href="/categories/tainghe.php" class="dropdown-item">Tai nghe</a></li>
-              <li><a href="/3" class="dropdown-item">link 3</a></li>
+              <?php
+              foreach ($cates as $c) {
+                $n = $c['name']; $l = $c['id'];
+              ?>
+              <li><a href="/categories/list.php?c=<?=$l?>" class="dropdown-item"><?=$n?></a></li>
+              <?php
+              }
+              ?>
             </ul>
           </li>
         </ul>

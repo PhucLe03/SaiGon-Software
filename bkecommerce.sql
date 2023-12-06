@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 05, 2023 at 02:59 PM
+-- Generation Time: Dec 06, 2023 at 05:14 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -192,7 +192,11 @@ INSERT INTO `transaction` (`transID`, `username`, `type`, `productA`, `productB`
 (4, 'phucle', 'exchange', 'lc175', 'lc175', 1, 5000, '2023-12-05 14:45:21'),
 (5, 'phucle', 'exchange', 'lc175', 'tn113', 1, 5000, '2023-12-05 14:45:42'),
 (6, 'phucle', 'buy', 'tn113', '', 1, 300000, '2023-12-05 15:07:31'),
-(7, 'phucle', 'buy', 'lc175', '', 2, 100000, '2023-12-05 15:07:31');
+(7, 'phucle', 'buy', 'lc175', '', 2, 100000, '2023-12-05 15:07:31'),
+(8, 'phucle', 'addfund', '', '', 1, 20000, '2023-12-05 22:05:19'),
+(9, 'phucle', 'addfund', '', '', 1, 20000, '2023-12-05 22:05:28'),
+(10, 'phucle', 'addfund', '', '', 1, 30000, '2023-12-05 22:33:01'),
+(11, 'phucle', 'addfund', '', '', 1, 100000, '2023-12-05 22:33:12');
 
 -- --------------------------------------------------------
 
@@ -214,8 +218,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`username`, `fname`, `lname`, `byear`, `password`, `balance`) VALUES
-('hailua', 'Phuc', 'Le', 2003, '123', 850000),
-('phucle', 'Phuc', 'Le', 2003, '123', 7485000);
+('hailua', 'Phúc', 'Lê', 2003, '123', 850000),
+('phucle', 'Phuc', 'Le', 2003, '123', 8705000),
+('phucle03', 'Hoàng Phúc', 'Lê', 2003, '123', 0);
 
 -- --------------------------------------------------------
 
@@ -307,7 +312,7 @@ ALTER TABLE `exchange`
 -- AUTO_INCREMENT for table `transaction`
 --
 ALTER TABLE `transaction`
-  MODIFY `transID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `transID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Constraints for dumped tables
