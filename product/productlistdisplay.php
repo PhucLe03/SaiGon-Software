@@ -2,7 +2,7 @@
 $productID = $_GET['productID'];
 $product = getProductByID($productID, $conn);
 $product['imageUrl'] = getImg($product['category']);
-$price = formatPrice($product['price']);
+$price = number_format($product['price'], 0, '', ',');
 $category = getCategoryName($product['category'], $conn);
 
 ?>
