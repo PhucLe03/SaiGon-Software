@@ -16,6 +16,20 @@ function getProductByID($productID, $conn)
     }
 }
 
+function getAllProduct($conn)
+{
+    $sql = "SELECT * FROM `products`";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+    if ($stmt->rowCount() > 0) {
+        $items = $stmt->fetchAll();
+        // $items['price'] = number_format($items['price'], 0, '', ',');
+        return $items;
+    } else {
+        return 0;
+    }
+}
+
 function getProductByCate($category, $conn)
 {
     $sql = "SELECT * FROM `products`
