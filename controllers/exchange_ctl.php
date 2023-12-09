@@ -71,6 +71,9 @@ function processExchange($user,$hh,$sp,$buyID,$cost,$conn) {
     $u = $stmt->fetch();
     $balance = $u['balance'];
     $newbalance = $balance + $cost;
+    if ($newbalance <= 0) {
+        $newbalance = 0;
+    }
     
     // Update balance
     $sql = "UPDATE user SET balance=:ba

@@ -35,7 +35,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['tucach'])) {
             <div class="container">
                 <h1>Trao đổi</h1>
                 <div class="d-flex flex-row-reverse">
-                    <a href="addfund.php">Nạp thêm tiền vào tài khoản</a>
+                    <a href="./addfund.php">Nạp thêm tiền vào tài khoản</a>
                 </div>
                 <div class="d-flex justify-content-center">
                     <h4>Số dư tài khoản: <?= $balance ?> VNĐ </h4>

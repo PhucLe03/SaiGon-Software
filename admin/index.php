@@ -34,7 +34,6 @@ if (isset($_SESSION['username'])) {
         <h1>Trang cá nhân Quản lý</h1>
         <div class="row">
             <div class="col-4 card" style="width: 18rem;">
-                <!-- <img src="../img/student-<?= $student['gender'] ?>.png" class="card-img-top" alt="..."> -->
                 <img src="../assets/images/logo.png" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title text-center">@<?= $user['username'] ?></h5>

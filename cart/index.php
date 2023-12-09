@@ -48,6 +48,9 @@ if (isset($_SESSION['username']) && isset($_SESSION['tucach'])) {
                     }
                     ?>
 
+                <div class="d-flex flex-row-reverse">
+                    <a href="/cart/bkpay.php" class="phuc_button">Thanh toán tất cả</a>
+                </div>
                 <?php
                 } else {
                 ?>
@@ -58,9 +61,6 @@ if (isset($_SESSION['username']) && isset($_SESSION['tucach'])) {
                 <?php
                 }
                 ?>
-                <div class="d-flex flex-row-reverse">
-                    <a href="/cart/bkpay.php" class="phuc_button">Thanh toán tất cả</a>
-                </div>
             </div>
             <?php include "../footer.php"; ?>
         </body>
